@@ -1,7 +1,7 @@
 import { motion, useInView, AnimatePresence } from 'motion/react'
 import { useRef, useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
-import { ScrollAnimation, StaggerContainer, StaggerItem } from '../components/ScrollAnimation'
+import { ScrollAnimation } from '../components/ScrollAnimation'
 
 interface Project {
   title: string

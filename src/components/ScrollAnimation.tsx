@@ -1,11 +1,7 @@
 import { motion, useInView } from 'motion/react'
-import { useRef, ReactNode } from 'react'
-
-// Define Variants type locally since motion/react doesn't export it at runtime
-type Variants = {
-  hidden: Record<string, unknown>
-  visible: Record<string, unknown>
-}
+import type { Transition, Variants } from 'motion/react'
+import { useRef } from 'react'
+import type { ReactNode } from 'react'
 
 type AnimationType =
   | 'fadeUp'
@@ -216,25 +212,25 @@ const animations: Record<AnimationType, Variants> = {
   }
 }
 
-const getTransition = (animation: AnimationType, duration: number, delay: number) => {
-  const baseTransition = {
+const getTransition = (animation: AnimationType, duration: number, delay: number): Transition => {
+  const baseTransition: Transition = {
     duration,
     delay,
-    ease: [0.25, 0.4, 0.25, 1]
+    ease: 'easeInOut'
   }
 
   switch (animation) {
     case 'elastic':
       return {
-        ...baseTransition,
         type: 'spring',
+        delay,
         stiffness: 100,
         damping: 10
       }
     case 'bounce':
       return {
-        ...baseTransition,
         type: 'spring',
+        delay,
         stiffness: 300,
         damping: 20
       }
@@ -242,20 +238,19 @@ const getTransition = (animation: AnimationType, duration: number, delay: number
       return {
         ...baseTransition,
         duration: duration * 1.2,
-        ease: [0.6, 0.01, 0.05, 0.95]
+        ease: 'easeInOut'
       }
     case 'reveal':
     case 'maskUp':
       return {
         ...baseTransition,
         duration: duration * 1.5,
-        ease: [0.77, 0, 0.175, 1]
+        ease: 'easeInOut'
       }
     case 'glitch':
       return {
         ...baseTransition,
-        duration: duration * 0.6,
-        ease: [0.68, -0.55, 0.265, 1.55]
+        duration: duration * 0.6
       }
     default:
       return baseTransition
@@ -420,7 +415,7 @@ export const StaggerItem = ({
       variants={itemVariants[animation]}
       transition={{
         duration,
-        ease: [0.25, 0.4, 0.25, 1]
+        ease: 'easeInOut'
       }}
     >
       {children}
@@ -489,7 +484,7 @@ export const TextReveal = ({ children, className = '', delay = 0, once = true }:
             transition={{
               duration: 0.5,
               delay: delay + i * 0.08,
-              ease: [0.33, 1, 0.68, 1]
+              ease: 'easeOut'
             }}
           >
             {word}

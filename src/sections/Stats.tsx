@@ -1,7 +1,6 @@
 import { motion, useInView } from 'motion/react'
 import { useRef, useState, useMemo } from 'react'
 import CountUp from '../components/CountUp'
-import { ScrollAnimation } from '../components/ScrollAnimation'
 
 interface StatItem {
   value: number

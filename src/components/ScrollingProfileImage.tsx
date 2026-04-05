@@ -1,14 +1,6 @@
 import { motion, useScroll, useTransform } from 'motion/react'
 import { useEffect, useState } from 'react'
 
-// Easing function: fast start, faster middle, fast end
-// Adjust the exponent to control the curve (higher = faster middle)
-const easeInOutCubic = (t: number): number => {
-  return t < 0.5
-    ? 4 * t * t * t
-    : 1 - Math.pow(-2 * t + 2, 3) / 2
-}
-
 // Alternative: even faster in the middle
 const easeInOutQuint = (t: number): number => {
   return t < 0.5
@@ -43,9 +35,7 @@ const ScrollingProfileImage = () => {
         const currentScroll = window.scrollY
 
         // Calculate absolute positions
-        const heroX = heroRect.left + currentScroll * 0 // Keep horizontal position relative to viewport initially
         const heroY = heroRect.top + currentScroll
-        const aboutX = aboutRect.left
         const aboutY = aboutRect.top + currentScroll
 
         // Animation should start when hero starts leaving viewport
@@ -93,13 +83,6 @@ const ScrollingProfileImage = () => {
     scrollY,
     [positions.scrollStart, positions.scrollEnd],
     [positions.heroX, positions.aboutX],
-    { clamp: true, ease: easingFn }
-  )
-
-  const y = useTransform(
-    scrollY,
-    [positions.scrollStart, positions.scrollEnd],
-    [positions.heroY, positions.aboutY],
     { clamp: true, ease: easingFn }
   )
 
