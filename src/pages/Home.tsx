@@ -1,4 +1,5 @@
 import Header from '../components/Header'
+import ScrollingProfileImage from '../components/ScrollingProfileImage'
 import Hero from '../sections/Hero'
 import About from '../sections/About'
 import Experience from '../sections/Experience'
@@ -12,6 +13,7 @@ const Home = () => {
   return (
     <main className="flex flex-col min-h-screen bg-background">
       <Header />
+      <ScrollingProfileImage />
       <Hero />
       <About />
       <Experience />

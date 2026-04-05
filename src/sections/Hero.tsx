@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -24,6 +23,7 @@ const Hero = () => {
 
   return (
     <section
+      id="hero-section"
       ref={heroRef}
       className="min-h-screen flex items-center px-6 sm:px-8 lg:px-16 pt-16"
     >
@@ -86,12 +86,16 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Side - Profile Image */}
-          <div className="order-1 lg:order-2 reveal stagger-2 flex justify-center lg:justify-end">
-            <img
-              src="/profile.png"
-              alt="Nisal Fonseka"
-              className="max-w-full h-auto"
+          {/* Right Side - Profile Image Placeholder (actual image is rendered by ScrollingProfileImage) */}
+          <div 
+            id="hero-image-placeholder"
+            className="order-1 lg:order-2 reveal stagger-2 flex justify-center lg:justify-end w-full mx-auto lg:mx-0"
+          >
+            {/* Invisible placeholder to maintain layout - the actual image follows scroll */}
+            <img 
+              src="/profile.png" 
+              alt="" 
+              className="invisible max-w-full h-auto"
             />
           </div>
         </div>

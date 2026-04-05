@@ -32,6 +32,14 @@ const About = () => {
                 About Me
               </h2>
             </ScrollAnimation>
+            
+            {/* Target position for the scrolling profile image */}
+            <div 
+              id="about-image-target"
+              className="mt-6 w-[200px] h-[200px] rounded-2xl"
+            >
+              {/* Invisible placeholder - the scrolling image will land here */}
+            </div>
           </div>
 
           {/* Content */}
