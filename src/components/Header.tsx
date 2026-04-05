@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import ScrambledText from './ScrambledText'
 
 const Header = () => {
@@ -37,11 +38,11 @@ const Header = () => {
   }
 
   const navItems = [
-    { id: 'about', label: 'ABOUT' },
-    { id: 'experience', label: 'EXPERIENCE' },
-    { id: 'projects', label: 'PROJECTS' },
-    { id: 'skills', label: 'SKILLS' },
-    { id: 'contact', label: 'CONTACT' },
+    { id: 'about', label: 'ABOUT', isRoute: false },
+    { id: 'experience', label: 'EXPERIENCE', isRoute: false },
+    { id: 'projects', label: 'PROJECTS', isRoute: false },
+    { id: 'skills', label: 'SKILLS', isRoute: false },
+    { id: 'contact', label: 'CONTACT', isRoute: true, path: '/contact' },
   ]
 
   return (
@@ -77,21 +78,39 @@ const Header = () => {
           {/* Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="text-sm text-neutral-400 hover:text-white transition-colors cursor-pointer"
-              >
-                <ScrambledText
-                  radius={40}
-                  duration={0.6}
-                  speed={0.3}
-                  scrambleChars="XYZ"
-                  className="text-sm font-semibold text-neutral-400 hover:text-white transition-colors font-space [&>p]:m-0"
+              item.isRoute ? (
+                <Link
+                  key={item.id}
+                  to={item.path!}
+                  className="text-sm text-neutral-400 hover:text-white transition-colors cursor-pointer"
                 >
-                  {item.label}
-                </ScrambledText>
-              </button>
+                  <ScrambledText
+                    radius={40}
+                    duration={0.6}
+                    speed={0.3}
+                    scrambleChars="XYZ"
+                    className="text-sm font-semibold text-neutral-400 hover:text-white transition-colors font-space [&>p]:m-0"
+                  >
+                    {item.label}
+                  </ScrambledText>
+                </Link>
+              ) : (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="text-sm text-neutral-400 hover:text-white transition-colors cursor-pointer"
+                >
+                  <ScrambledText
+                    radius={40}
+                    duration={0.6}
+                    speed={0.3}
+                    scrambleChars="XYZ"
+                    className="text-sm font-semibold text-neutral-400 hover:text-white transition-colors font-space [&>p]:m-0"
+                  >
+                    {item.label}
+                  </ScrambledText>
+                </button>
+              )
             ))}
           </nav>
 

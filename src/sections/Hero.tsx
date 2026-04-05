@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null)

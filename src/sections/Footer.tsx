@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
-import { Github, Linkedin, Instagram, Twitter, ArrowUpRight } from 'lucide-react'
+import { Github, Linkedin, Instagram, ArrowUpRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -40,8 +41,8 @@ const Footer = () => {
       {/* CTA Section */}
       <div className="py-6 sm:py-64 px-6 sm:px-8 lg:px-16 xl:px-24">
         <div className="text-center reveal stagger-1">
-          <a
-            href="mailto:hello@nisalfonseka.com"
+          <Link
+            to="/contact"
             className="inline-flex items-center gap-4 group"
           >
             <h2 className="relative text-4xl sm:text-5xl lg:text-7xl font-bold font-playfair transition-colors duration-500 group-hover:text-black overflow-hidden">
@@ -49,7 +50,7 @@ const Footer = () => {
               Lets get in contact!
             </h2>
             <ArrowUpRight className="w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 group-hover:rotate-45 transition-transform duration-200" />
-          </a>
+          </Link>
         </div>
       </div>
 
