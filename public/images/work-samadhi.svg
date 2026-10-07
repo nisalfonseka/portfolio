@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="t d">
+  <title id="t">SamadhiRice commerce product visual</title><desc id="d">An editorial product composition inspired by rice fields.</desc>
+  <rect width="1200" height="700" fill="#e9e1cb"/><path d="M0 480C200 400 360 580 600 470s390-30 600 40v190H0z" fill="#214d32"/><path d="M0 530c240-100 420 110 660-5s370 0 540 40" fill="none" stroke="#f4f1ea" stroke-width="20" opacity=".65"/>
+  <rect x="70" y="60" width="510" height="290" fill="#fff"/><text x="110" y="135" fill="#214d32" font-family="Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="5">PRODUCT / COMMERCE</text><text x="105" y="265" fill="#101010" font-family="Arial,sans-serif" font-size="78" font-weight="700">SAMADHI</text><text x="105" y="325" fill="#e85d32" font-family="Arial,sans-serif" font-size="64" font-weight="700">RICE</text>
+  <g fill="#d8a634"><ellipse cx="900" cy="215" rx="22" ry="8" transform="rotate(35 900 215)"/><ellipse cx="960" cy="260" rx="22" ry="8" transform="rotate(35 960 260)"/><ellipse cx="1020" cy="305" rx="22" ry="8" transform="rotate(35 1020 305)"/></g><path d="M850 160l220 190" stroke="#805e1d" stroke-width="5"/>
+</svg>

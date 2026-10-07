@@ -1,73 +1,74 @@
-# React + TypeScript + Vite
+# Nisal Fonseka — Engineering Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full Next.js portfolio and content admin for `nisalfonseka.com`. The public site presents selected work, case studies, services, experience, research, recognition, engineering notes and a client contact flow. The private admin manages projects, achievement images and incoming inquiries.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Next.js 16 App Router, React 19 and TypeScript
+- Tailwind CSS and Montserrat throughout
+- Paper Shaders + Framer Motion for the hero
+- Neon Postgres for editable content and inquiries
+- Neon Object Storage for private admin image uploads
+- Brevo transactional SMS for new-inquiry alerts
+- Vercel for hosting
 
-## React Compiler
+## Local setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+cp .env.example .env
+npm run db:migrate
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open `http://localhost:3000`. The content admin is at `http://localhost:3000/admin`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+This workspace is already linked to Neon project `dawn-flower-12549551`, branch `production`. To refresh Neon-managed environment variables:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+neon env pull
 ```
+
+## Required environment variables
+
+Copy `.env.example` and provide:
+
+- `ADMIN_PASSWORD` and `AUTH_SECRET` for the admin login.
+- `DATABASE_URL` and `DATABASE_URL_UNPOOLED` from Neon.
+- `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_ENDPOINT_URL_S3`, and `AWS_REGION` from Neon Object Storage.
+- `BREVO_API_KEY`, `BREVO_SMS_RECIPIENT`, and `BREVO_SMS_SENDER` if SMS alerts are wanted.
+- `NEXT_PUBLIC_SITE_URL=https://nisalfonseka.com`.
+
+Never commit `.env`; it is ignored by Git.
+
+## Neon infrastructure
+
+[`neon.ts`](./neon.ts) declares a private `uploads` bucket. Reconcile it with the linked branch using:
+
+```bash
+neon config plan
+neon deploy
+```
+
+Database migrations are stored in `db/migrations` and run through `npm run db:migrate`. Use the unpooled Neon URL for migration work; normal application requests use the pooled `DATABASE_URL`.
+
+## Vercel deployment
+
+1. Import this repository into Vercel.
+2. Add every required environment variable to the Production environment.
+3. Run `npm run db:migrate` once against the production Neon branch.
+4. Deploy with the standard Next.js build command, `npm run build`.
+5. Add `nisalfonseka.com` in Vercel Domains and point the domain DNS to Vercel.
+
+The contact form always stores successful inquiries in Neon. If Brevo is configured, it also sends a short transactional SMS alert; the full message remains available in the admin inbox.
+
+## Content management
+
+The admin panel can:
+
+- add, edit, reorder and delete project case studies;
+- add, edit, reorder and delete recognition entries;
+- upload achievement and project images into the private Neon bucket;
+- read the latest 100 contact inquiries.
+
+Private bucket keys are stored in Postgres. Public pages receive time-limited signed image URLs at render time, so storage credentials never reach the browser.

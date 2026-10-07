@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="t d">
+  <title id="t">SinAI research abstract visual</title><desc id="d">Large Sinhala letterforms with research accuracy values.</desc>
+  <rect width="1200" height="700" fill="#101010"/><circle cx="940" cy="120" r="280" fill="#e85d32"/><circle cx="945" cy="125" r="170" fill="#101010"/>
+  <text x="56" y="130" fill="#f4f1ea" font-family="Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="5">SINHALA LANGUAGE RESEARCH</text><text x="45" y="485" fill="#f4f1ea" font-family="Arial,sans-serif" font-size="370" font-weight="700">සිං</text>
+  <text x="760" y="510" fill="#f4f1ea" font-family="Arial,sans-serif" font-size="112" font-weight="700">87.7%</text><text x="770" y="555" fill="#f4f1ea" opacity=".55" font-family="Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="3">SENTENCE ACCURACY</text><path d="M760 590h380" stroke="#f4f1ea" stroke-opacity=".35"/>
+</svg>

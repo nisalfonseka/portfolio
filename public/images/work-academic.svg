@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="t d">
+  <title id="t">Academic AI abstract visual</title><desc id="d">An editorial grid representing connected learning modules.</desc>
+  <rect width="1200" height="700" fill="#f4f1ea"/><g fill="#101010"><rect x="50" y="50" width="350" height="260"/><rect x="420" y="50" width="730" height="120"/><rect x="420" y="190" width="350" height="120"/><rect x="790" y="190" width="360" height="120"/></g>
+  <rect x="50" y="330" width="1100" height="320" fill="#e85d32"/><g stroke="#f4f1ea" stroke-width="2"><path d="M110 390h980M110 450h980M110 510h980M110 570h980"/><path d="M300 370v240M520 370v240M740 370v240M960 370v240"/></g>
+  <text x="78" y="110" fill="#fff" font-family="Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="3">MODULE 01</text><text x="450" y="123" fill="#fff" font-family="Arial,sans-serif" font-size="62" font-weight="700">ACADEMIC AI</text><text x="88" y="610" fill="#fff" font-family="Arial,sans-serif" font-size="26" font-weight="700" letter-spacing="6">KNOWLEDGE / CONTEXT / LEARNING</text>
+</svg>

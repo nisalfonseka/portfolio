@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="t d">
+  <title id="t">Cravely distributed systems visual</title><desc id="d">Service blocks arranged as an orange and black system map.</desc>
+  <rect width="1200" height="700" fill="#f4f1ea"/><g fill="#101010"><rect x="70" y="70" width="270" height="180"/><rect x="465" y="70" width="270" height="180"/><rect x="860" y="70" width="270" height="180"/><rect x="270" y="430" width="270" height="180"/><rect x="665" y="430" width="270" height="180"/></g><g fill="#fff" font-family="Arial,sans-serif" font-weight="700" font-size="20" letter-spacing="3"><text x="105" y="170">USER</text><text x="500" y="170">ORDER</text><text x="895" y="170">PAYMENT</text><text x="305" y="530">MENU</text><text x="700" y="530">DELIVERY</text></g>
+  <g stroke="#e85d32" stroke-width="8" fill="none"><path d="M340 160h125M735 160h125M600 250v90H405v90M600 340h200v90"/></g><circle cx="600" cy="340" r="25" fill="#e85d32"/><text x="70" y="675" fill="#101010" font-family="Arial,sans-serif" font-size="52" font-weight="700" letter-spacing="-2">CRAVELY / DISTRIBUTED PRODUCT</text>
+</svg>
