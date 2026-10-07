@@ -34,12 +34,16 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto flex min-h-[760px] max-w-[1440px] -translate-y-[4vh] flex-col justify-center px-5 pb-8 pt-28 sm:px-8 md:min-h-screen lg:px-12 lg:pb-10">
         <motion.h1
+          aria-label="I build intelligent software products."
           className="display max-w-[1080px] text-[clamp(3.75rem,9.3vw,9.25rem)] font-semibold"
           initial={reducedMotion ? false : { opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         >
-          I build intelligent software products.
+          <span aria-hidden="true" className="block">I build</span>
+          <span aria-hidden="true" className="block">intelligent</span>
+          <span aria-hidden="true" className="block">software</span>
+          <span aria-hidden="true" className="block">products.</span>
         </motion.h1>
 
         <motion.div
