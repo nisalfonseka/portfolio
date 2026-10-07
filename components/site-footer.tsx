@@ -7,7 +7,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[1440px] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="grid gap-14 border-b border-white/15 pb-20 sm:grid-cols-2 lg:grid-cols-[1.6fr_.65fr_.65fr_.65fr]">
           <div>
-            <h2 className="display max-w-4xl text-[clamp(3.6rem,9vw,9.5rem)] font-semibold">Let&apos;s build something useful.</h2>
+            <h2 className="display max-w-4xl text-[clamp(3.15rem,7vw,7.25rem)] font-semibold">Let&apos;s build something useful.</h2>
             <Link href="/contact" className="mt-10 inline-flex items-center gap-3 border-b border-white pb-2 text-sm font-semibold uppercase tracking-[0.16em]">
               Start a project <ArrowUpRight size={17} />
             </Link>

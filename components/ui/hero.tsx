@@ -23,6 +23,7 @@ export default function Hero() {
 
   return (
     <section
+      data-site-hero
       className="relative min-h-[760px] overflow-hidden bg-black text-white md:min-h-screen"
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}
@@ -33,7 +34,7 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto flex min-h-[760px] max-w-[1440px] -translate-y-[4vh] flex-col justify-center px-5 pb-8 pt-28 sm:px-8 md:min-h-screen lg:px-12 lg:pb-10">
         <motion.h1
-          className="display max-w-[1120px] text-[clamp(4.15rem,10.5vw,10.5rem)] font-semibold"
+          className="display max-w-[1080px] text-[clamp(3.75rem,9.3vw,9.25rem)] font-semibold"
           initial={reducedMotion ? false : { opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
@@ -42,7 +43,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.div
-          className="mt-8 grid gap-8 border-t border-white/20 pt-6 md:grid-cols-[1fr_auto] md:items-end"
+          className="mt-9 grid gap-8 md:grid-cols-[1fr_auto] md:items-end"
           initial={reducedMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.45 }}

@@ -7,12 +7,6 @@ const nextConfig: NextConfig = {
     return [
       { source: "/work/sliit-ai-assistant", destination: "/work/sliit-coeai-chatbot", permanent: true },
       { source: "/work/sliit-academic-ai", destination: "/work/sliit-academic-chatbot-platform", permanent: true },
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.nisalfonseka.com" }],
-        destination: "https://nisalfonseka.com/:path*",
-        permanent: true,
-      },
     ]
   },
   async headers() {

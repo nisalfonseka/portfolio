@@ -11,7 +11,7 @@ export const metadata = createPageMetadata({
 export default function ExperiencePage() {
   return (
     <main className="page-shell">
-      <PageHeading title="Experience" intro="Work across AI systems, product engineering and enterprise environments—with the engineering contributions kept concrete." />
+      <PageHeading compact title="Experience" intro="Work across AI systems, product engineering and enterprise environments—with the engineering contributions kept concrete." />
       <section className="px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
         <div className="mx-auto max-w-[1440px] border-t border-black/20">
           {experience.map((item, index) => (
