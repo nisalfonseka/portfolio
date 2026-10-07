@@ -1,8 +1,12 @@
-import type { Metadata } from "next"
 import { ContactForm } from "@/components/contact-form"
 import { PageHeading } from "@/components/page-heading"
+import { createPageMetadata } from "@/lib/seo"
 
-export const metadata: Metadata = { title: "Start a Project", description: "Talk to Nisal Fonseka about an AI application, RAG assistant or full-stack software project.", alternates: { canonical: "/contact" } }
+export const metadata = createPageMetadata({
+  title: "Start an AI or Full-Stack Project",
+  description: "Contact Nisal Fonseka to discuss an AI application, RAG assistant, academic AI platform or full-stack software product.",
+  path: "/contact",
+})
 
 export default function ContactPage() {
   return (
@@ -13,7 +17,7 @@ export default function ContactPage() {
           <div>
             <h2 className="text-2xl font-semibold tracking-[-.04em]">Start with the context.</h2>
             <p className="mt-5 max-w-sm text-sm leading-7 text-black/55">You do not need a finished specification. A clear description of the users, problem and constraints is enough to begin.</p>
-            <div className="mt-10 border-t border-black/20 pt-5 text-sm"><p className="font-semibold">nisalfonseka@gmail.com</p><p className="mt-2 text-black/45">Colombo · Available remotely worldwide</p></div>
+            <div className="mt-10 border-t border-black/20 pt-5 text-sm"><a className="font-semibold" href="mailto:hello@nisalfonseka.com">hello@nisalfonseka.com</a><p className="mt-2 text-black/45">Malabe, Sri Lanka · Available remotely worldwide</p></div>
           </div>
           <ContactForm />
         </div>

@@ -3,8 +3,9 @@ import { ArrowUpRight } from "lucide-react"
 import type { Project } from "@/lib/content"
 import { Reveal } from "@/components/reveal"
 
-export function ProjectList({ projects, limit }: { projects: Project[]; limit?: number }) {
+export function ProjectList({ projects, limit, headingLevel = "h3" }: { projects: Project[]; limit?: number; headingLevel?: "h2" | "h3" }) {
   const visibleProjects = limit ? projects.slice(0, limit) : projects
+  const Heading = headingLevel
 
   return (
     <div className="border-t border-black/20">
@@ -13,7 +14,7 @@ export function ProjectList({ projects, limit }: { projects: Project[]; limit?: 
           <Link href={`/work/${project.slug}`} className="group grid gap-6 border-b border-black/20 py-8 transition-colors hover:bg-white/45 md:grid-cols-[80px_1.25fr_.8fr_120px] md:items-center md:px-4 lg:py-10">
             <span className="text-xs font-semibold tracking-[.18em] text-black/40">{project.number}</span>
             <div>
-              <h3 className="text-2xl font-semibold tracking-[-.04em] sm:text-3xl">{project.title}</h3>
+              <Heading className="text-2xl font-semibold tracking-[-.04em] sm:text-3xl">{project.title}</Heading>
               <p className="mt-2 max-w-xl text-sm leading-6 text-black/55">{project.summary}</p>
             </div>
             <div className="flex flex-wrap gap-2">

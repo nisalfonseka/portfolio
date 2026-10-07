@@ -7,13 +7,13 @@ import { Reveal } from "@/components/reveal"
 import { getPublicSiteContent } from "@/lib/content-store"
 import { experience, notes, services } from "@/lib/content"
 
-export const revalidate = 0
+export const revalidate = 300
 
 const proof = [
-  ["300+", "students reached through an AI platform"],
-  ["Multi-LLM", "OpenAI · Anthropic · xAI"],
+  ["300+", "active users across three SLIIT departments"],
+  ["2,000+", "students in the planned academic rollout"],
   ["87.7%", "sentence-level grammar correction accuracy"],
-  ["End-to-end", "AI · backend · interface · deployment"],
+  ["36,000+", "rows across 18 Sinhala grammar categories"],
 ]
 
 export default async function HomePage() {
@@ -108,7 +108,7 @@ export default async function HomePage() {
             <div className="grid grid-cols-2 gap-px bg-black/15 p-px">
               <div className="bg-ink p-8 text-white sm:p-12"><strong className="display text-5xl font-semibold sm:text-7xl">87.7%</strong><span className="mt-5 block text-xs uppercase tracking-[.15em] text-white/50">Sentence accuracy</span></div>
               <div className="bg-orange-600 p-8 text-white sm:p-12"><strong className="display text-5xl font-semibold sm:text-7xl">75.0%</strong><span className="mt-5 block text-xs uppercase tracking-[.15em] text-white/70">Real-news paragraphs</span></div>
-              <div className="col-span-2 bg-paper p-8 sm:p-12"><strong className="display text-5xl font-semibold sm:text-7xl">~700k</strong><span className="mt-5 block text-xs uppercase tracking-[.15em] text-black/45">Sinhala news articles</span></div>
+              <div className="col-span-2 bg-paper p-8 sm:p-12"><strong className="display text-5xl font-semibold sm:text-7xl">700K+</strong><span className="mt-5 block text-xs uppercase tracking-[.15em] text-black/45">Sinhala news articles</span></div>
             </div>
           </div>
         </div>

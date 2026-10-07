@@ -1,10 +1,17 @@
 "use client"
 
 import { FormEvent, useEffect, useState } from "react"
-import { ArrowDown, ArrowUp, Check, ImagePlus, Loader2, LogOut, Plus, Save, Trash2 } from "lucide-react"
+import { ArrowDown, ArrowUp, Check, ImagePlus, Loader2, LogOut, Mail, Plus, Save, Send, Trash2 } from "lucide-react"
 import type { Achievement, Inquiry, Project, SiteContent } from "@/lib/content"
 
-type Tab = "projects" | "achievements" | "inquiries"
+type Tab = "projects" | "achievements" | "inquiries" | "email"
+
+type EmailDraft = {
+  recipientName: string
+  recipientEmail: string
+  subject: string
+  message: string
+}
 
 const field = "mt-2 w-full border border-black/20 bg-white px-3 py-2.5 text-sm outline-none focus:border-black"
 const label = "block text-[10px] font-semibold uppercase tracking-[.13em] text-black/45"
@@ -122,6 +129,64 @@ function AchievementEditor({ achievement, update }: { achievement: Achievement; 
   )
 }
 
+function EmailComposer({ draft, update }: { draft: EmailDraft; update: (draft: EmailDraft) => void }) {
+  const [sending, setSending] = useState(false)
+  const [sent, setSent] = useState(false)
+  const [error, setError] = useState("")
+
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    setSending(true)
+    setSent(false)
+    setError("")
+
+    try {
+      const response = await fetch("/api/admin/email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(draft),
+      })
+      const data = await response.json() as { message?: string }
+      if (!response.ok) throw new Error(data.message || "Could not send this email.")
+      setSent(true)
+    } catch (emailError) {
+      setError(emailError instanceof Error ? emailError.message : "Could not send this email.")
+    } finally {
+      setSending(false)
+    }
+  }
+
+  const set = (key: keyof EmailDraft, value: string) => {
+    setSent(false)
+    update({ ...draft, [key]: value })
+  }
+
+  return (
+    <section className="mt-8 max-w-4xl border border-black/15 bg-[#f7f5ef] p-5 sm:p-8">
+      <div className="border-b border-black/15 pb-6">
+        <h2 className="text-2xl font-semibold tracking-[-.04em]">Send client email</h2>
+        <p className="mt-2 text-sm leading-6 text-black/50">Transactional email sent through Brevo as Nisal Fonseka &lt;hello@nisalfonseka.com&gt;.</p>
+      </div>
+      <form onSubmit={submit} className="mt-7 grid gap-6">
+        <div className="grid gap-5 sm:grid-cols-2">
+          <label className={label}>Client name<input value={draft.recipientName} onChange={(event) => set("recipientName", event.target.value)} maxLength={100} className={field} placeholder="Optional" /></label>
+          <label className={label}>Client email<input value={draft.recipientEmail} onChange={(event) => set("recipientEmail", event.target.value)} type="email" required maxLength={160} className={field} placeholder="client@example.com" /></label>
+        </div>
+        <label className={label}>Subject<input value={draft.subject} onChange={(event) => set("subject", event.target.value)} required minLength={2} maxLength={200} className={field} placeholder="Project follow-up" /></label>
+        <label className={label}>Message<textarea value={draft.message} onChange={(event) => set("message", event.target.value)} required minLength={2} maxLength={12000} rows={13} className={field} placeholder={"Hi,\n\nThank you for getting in touch...\n\nBest,\nNisal"} /></label>
+        <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+          <button disabled={sending} className="inline-flex items-center gap-2 bg-ink px-5 py-3 text-xs font-semibold uppercase tracking-[.12em] text-white disabled:opacity-50">
+            {sending ? <Loader2 className="animate-spin" size={15} /> : sent ? <Check size={15} /> : <Send size={15} />}
+            {sending ? "Sending" : sent ? "Email sent" : "Send email"}
+          </button>
+          {error && <p role="alert" className="text-sm text-red-700">{error}</p>}
+          {sent && <p role="status" className="text-sm text-emerald-700">Brevo accepted the email for delivery.</p>}
+        </div>
+      </form>
+    </section>
+  )
+}
+
 export function AdminPanel() {
   const [loading, setLoading] = useState(true)
   const [authenticated, setAuthenticated] = useState(false)
@@ -133,6 +198,7 @@ export function AdminPanel() {
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
   const [error, setError] = useState("")
+  const [emailDraft, setEmailDraft] = useState<EmailDraft>({ recipientName: "", recipientEmail: "", subject: "", message: "" })
 
   async function load() {
     const session = await fetch("/api/admin/session", { cache: "no-store" }).then((response) => response.json()) as { authenticated: boolean; configured: boolean }
@@ -205,10 +271,12 @@ export function AdminPanel() {
     <div className="mx-auto max-w-[1500px] px-5 py-12 sm:px-8 lg:px-12">
       <header className="flex flex-col gap-6 border-b border-black/15 pb-8 sm:flex-row sm:items-end sm:justify-between"><div><h1 className="text-4xl font-semibold tracking-[-.055em]">Portfolio admin</h1><p className="mt-2 text-sm text-black/50">Neon Postgres · private Neon Object Storage</p></div><div className="flex gap-3"><button onClick={save} disabled={saving} className="inline-flex items-center gap-2 bg-ink px-5 py-3 text-xs font-semibold uppercase tracking-[.12em] text-white">{saving ? <Loader2 className="animate-spin" size={15} /> : saved ? <Check size={15} /> : <Save size={15} />}{saving ? "Saving" : saved ? "Saved" : "Save changes"}</button><button onClick={logout} className="grid size-10 place-items-center border border-black/20 bg-white" aria-label="Sign out"><LogOut size={16} /></button></div></header>
       {error && <p className="mt-5 border border-red-200 bg-red-50 p-4 text-sm text-red-700">{error}</p>}
-      <nav className="mt-8 flex gap-2 overflow-x-auto">{(["projects", "achievements", "inquiries"] as Tab[]).map((item) => <button key={item} onClick={() => { setTab(item); setSelected(0) }} className={`px-4 py-2 text-xs font-semibold uppercase tracking-[.12em] ${tab === item ? "bg-ink text-white" : "border border-black/15 bg-white"}`}>{item}</button>)}</nav>
+      <nav className="mt-8 flex gap-2 overflow-x-auto">{(["projects", "achievements", "inquiries", "email"] as Tab[]).map((item) => <button key={item} onClick={() => { setTab(item); setSelected(0) }} className={`inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-[.12em] ${tab === item ? "bg-ink text-white" : "border border-black/15 bg-white"}`}>{item === "email" && <Mail size={14} />}{item}</button>)}</nav>
 
-      {tab === "inquiries" ? (
-        <div className="mt-8 grid gap-4">{inquiries.length ? inquiries.map((inquiry) => <article key={inquiry.id} className="border border-black/15 bg-white p-6"><div className="flex flex-col justify-between gap-2 sm:flex-row"><h2 className="text-xl font-semibold">{inquiry.name} · {inquiry.service}</h2><time className="text-xs text-black/40">{new Date(inquiry.createdAt).toLocaleString()}</time></div><p className="mt-2 text-sm text-black/55">{inquiry.email}{inquiry.company ? ` · ${inquiry.company}` : ""} · {inquiry.timeline || "Timeline open"} · {inquiry.budget || "Budget open"}</p><p className="mt-5 whitespace-pre-wrap text-sm leading-7">{inquiry.message}</p></article>) : <p className="py-20 text-center text-black/45">No inquiries yet.</p>}</div>
+      {tab === "email" ? (
+        <EmailComposer draft={emailDraft} update={setEmailDraft} />
+      ) : tab === "inquiries" ? (
+        <div className="mt-8 grid gap-4">{inquiries.length ? inquiries.map((inquiry) => <article key={inquiry.id} className="border border-black/15 bg-white p-6"><div className="flex flex-col justify-between gap-2 sm:flex-row"><h2 className="text-xl font-semibold">{inquiry.name} · {inquiry.service}</h2><time className="text-xs text-black/40">{new Date(inquiry.createdAt).toLocaleString()}</time></div><p className="mt-2 text-sm text-black/55">{inquiry.email}</p><p className="mt-5 whitespace-pre-wrap text-sm leading-7">{inquiry.message}</p><button onClick={() => { setEmailDraft({ recipientName: inquiry.name, recipientEmail: inquiry.email, subject: `Re: ${inquiry.service} enquiry`, message: `Hi ${inquiry.name.split(" ")[0]},\n\nThank you for reaching out about your ${inquiry.service.toLowerCase()} project.\n\n\n\nBest,\nNisal` }); setTab("email") }} className="mt-6 inline-flex items-center gap-2 border border-black/20 px-4 py-2.5 text-xs font-semibold uppercase tracking-[.12em]"><Mail size={14} /> Reply by email</button></article>) : <p className="py-20 text-center text-black/45">No inquiries yet.</p>}</div>
       ) : (
         <div className="mt-8 grid gap-6 lg:grid-cols-[300px_1fr]">
           <aside className="h-fit border border-black/15 bg-white p-3 lg:sticky lg:top-24">

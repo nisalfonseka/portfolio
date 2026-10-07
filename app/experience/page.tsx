@@ -1,8 +1,12 @@
-import type { Metadata } from "next"
 import { PageHeading } from "@/components/page-heading"
 import { experience } from "@/lib/content"
+import { createPageMetadata } from "@/lib/seo"
 
-export const metadata: Metadata = { title: "Experience", description: "Engineering experience across AI systems, telecommunications and full-stack product development.", alternates: { canonical: "/experience" } }
+export const metadata = createPageMetadata({
+  title: "AI Application Engineering Experience",
+  description: "Nisal Fonseka's engineering experience at SLIIT and Sri Lanka Telecom across generative AI applications, RAG, voice systems and enterprise software.",
+  path: "/experience",
+})
 
 export default function ExperiencePage() {
   return (

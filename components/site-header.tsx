@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
@@ -23,7 +24,9 @@ export function SiteHeader() {
     <header className={`fixed inset-x-0 top-0 z-50 border-b ${onHero ? "border-white/15 bg-black/20 text-white" : "border-black/10 bg-[#f4f1ea]/90 text-ink"} backdrop-blur-xl`}>
       <div className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
         <Link href="/" className="group flex items-center gap-3" aria-label="Nisal Fonseka home">
-          <span className={`grid size-8 place-items-center border text-[11px] font-bold ${onHero ? "border-white/30" : "border-black/25"}`}>NF</span>
+          <span className={`grid size-9 place-items-center ${onHero ? "" : "bg-ink"}`}>
+            <Image src="/images/logowhite.png" alt="" width={30} height={30} priority />
+          </span>
           <span className="text-[12px] font-semibold uppercase tracking-[0.18em]">Nisal Fonseka</span>
         </Link>
 

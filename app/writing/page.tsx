@@ -1,10 +1,14 @@
-import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { PageHeading } from "@/components/page-heading"
 import { notes } from "@/lib/content"
+import { createPageMetadata } from "@/lib/seo"
 
-export const metadata: Metadata = { title: "Engineering Notes", description: "Original notes on LLM applications, retrieval systems, evaluation and full-stack AI engineering.", alternates: { canonical: "/writing" } }
+export const metadata = createPageMetadata({
+  title: "AI Engineering Notes",
+  description: "Original technical notes by Nisal Fonseka on multi-LLM products, PostgreSQL and pgvector RAG, and Sinhala grammar-correction evaluation.",
+  path: "/writing",
+})
 
 export default function WritingPage() {
   return (

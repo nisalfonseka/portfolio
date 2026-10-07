@@ -11,8 +11,8 @@ export default function ResumePage() {
       </div>
       <article className="mx-auto max-w-5xl px-5 py-16 sm:px-10 lg:py-24">
         <header className="grid gap-8 border-b border-black/25 pb-10 sm:grid-cols-[1fr_auto] sm:items-end">
-          <div><h1 className="text-5xl font-semibold tracking-[-.06em] sm:text-7xl">Nisal Fonseka</h1><p className="mt-4 text-lg text-black/60">AI Engineer · Full-Stack Developer</p></div>
-          <div className="text-sm leading-6 text-black/60 sm:text-right"><p>Colombo, Sri Lanka</p><a href="mailto:nisalfonseka@gmail.com">nisalfonseka@gmail.com</a><p>github.com/nisalfonseka</p></div>
+          <div><h1 className="text-5xl font-semibold tracking-[-.06em] sm:text-7xl">Nisal Fonseka</h1><p className="mt-4 text-lg text-black/60">AI Application Engineer</p></div>
+          <div className="text-sm leading-6 text-black/60 sm:text-right"><p>Malabe, Sri Lanka</p><a href="mailto:hello@nisalfonseka.com">hello@nisalfonseka.com</a><p>github.com/nisalfonseka</p></div>
         </header>
 
         <section className="grid gap-8 border-b border-black/20 py-10 sm:grid-cols-[170px_1fr]"><h2 className="text-xs font-semibold uppercase tracking-[.16em] text-black/45">Profile</h2><p className="max-w-3xl leading-7 text-black/70">Software engineer building AI-powered products end-to-end across model integration, RAG, backend systems, databases, authentication, interfaces and deployment.</p></section>

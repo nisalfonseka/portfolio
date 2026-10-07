@@ -2,7 +2,10 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowRight } from "lucide-react"
+import { Breadcrumbs } from "@/components/breadcrumbs"
+import { StructuredData } from "@/components/structured-data"
 import { services } from "@/lib/content"
+import { absoluteUrl, createPageMetadata, personSchemaId } from "@/lib/seo"
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -14,18 +17,44 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const service = services.find((item) => item.slug === slug)
   if (!service) return { title: "Services" }
-  return { title: service.title, description: service.description, alternates: { canonical: `/services/${service.slug}` } }
+  return createPageMetadata({ title: service.title, description: service.description, path: `/services/${service.slug}` })
 }
 
 export default async function ServicePage({ params }: Props) {
   const { slug } = await params
   const service = services.find((item) => item.slug === slug)
   if (!service) notFound()
+  const canonicalUrl = absoluteUrl(`/services/${service.slug}`)
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": `${canonicalUrl}#service`,
+        name: service.title,
+        url: canonicalUrl,
+        description: service.description,
+        provider: { "@id": personSchemaId },
+        areaServed: "Worldwide",
+        serviceType: service.title,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+          { "@type": "ListItem", position: 2, name: "Services", item: absoluteUrl("/services") },
+          { "@type": "ListItem", position: 3, name: service.title, item: canonicalUrl },
+        ],
+      },
+    ],
+  }
 
   return (
     <main className="page-shell">
+      <StructuredData id="service-schema" data={structuredData} />
       <header className="border-b border-black/15 px-5 pb-20 pt-20 sm:px-8 lg:px-12 lg:pb-28 lg:pt-28">
         <div className="mx-auto max-w-[1440px]">
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services", href: "/services" }, { label: service.title }]} />
           <h1 className="display max-w-6xl text-[clamp(4rem,11vw,10rem)] font-semibold">{service.title}</h1>
           <p className="mt-10 max-w-3xl text-lg leading-8 text-black/60">{service.description}</p>
           <Link href="/contact" className="mt-10 inline-flex items-center gap-3 bg-ink px-6 py-4 text-xs font-semibold uppercase tracking-[.15em] text-white">Discuss a project <ArrowRight size={16} /></Link>
@@ -47,6 +76,9 @@ export default async function ServicePage({ params }: Props) {
             </div>
           </div>
         </div>
+      </section>
+      <section className="border-t border-black/15 px-5 py-14 sm:px-8 lg:px-12">
+        <div className="mx-auto flex max-w-[1440px] flex-col gap-5 sm:flex-row sm:items-center sm:justify-between"><p className="text-sm text-black/55">See how these capabilities come together in real systems.</p><div className="flex flex-wrap gap-5"><Link href="/work" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.14em]">View projects <ArrowRight size={14} /></Link><Link href="/contact" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.14em]">Discuss a project <ArrowRight size={14} /></Link></div></div>
       </section>
     </main>
   )

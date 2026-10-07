@@ -51,6 +51,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Message received." })
   } catch (error) {
     console.error("Contact submission failed", error)
-    return NextResponse.json({ message: "Contact delivery is not configured yet. Please email nisalfonseka@gmail.com." }, { status: 503 })
+    return NextResponse.json({ message: "Contact delivery is not configured yet. Please email hello@nisalfonseka.com." }, { status: 503 })
   }
 }

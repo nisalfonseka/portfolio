@@ -1,7 +1,11 @@
-import type { Metadata } from "next"
 import { PageHeading } from "@/components/page-heading"
+import { createPageMetadata } from "@/lib/seo"
 
-export const metadata: Metadata = { title: "AI Engineer's Lab", description: "Experiments in retrieval, model evaluation, voice AI and Sinhala NLP.", alternates: { canonical: "/lab" } }
+export const metadata = createPageMetadata({
+  title: "AI Engineering Lab",
+  description: "Practical experiments by Nisal Fonseka in retrieval quality, LLM evaluation, realtime voice AI, prompt systems and Sinhala NLP.",
+  path: "/lab",
+})
 
 const experiments = [
   ["RAG experiments", "Retrieval quality, chunking, hybrid search and grounded answer behavior.", "Active"],

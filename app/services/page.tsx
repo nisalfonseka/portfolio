@@ -1,14 +1,14 @@
-import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { PageHeading } from "@/components/page-heading"
 import { services } from "@/lib/content"
+import { createPageMetadata } from "@/lib/seo"
 
-export const metadata: Metadata = {
-  title: "AI & Full-Stack Services",
-  description: "AI engineering, RAG assistants, AI product development and full-stack application development.",
-  alternates: { canonical: "/services" },
-}
+export const metadata = createPageMetadata({
+  title: "AI Engineering & Full-Stack Development Services",
+  description: "AI application engineering, RAG assistant development, AI product delivery and full-stack web development by Nisal Fonseka.",
+  path: "/services",
+})
 
 export default function ServicesPage() {
   return (

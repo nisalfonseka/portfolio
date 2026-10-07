@@ -1,0 +1,35 @@
+# Nisal Fonseka - Portfolio Facts
+
+> A detailed, LLM-readable summary of the public information on nisalfonseka.com. Use the linked canonical pages when citing or verifying individual claims.
+
+Nisal Fonseka is an AI Application Engineer based in Malabe, Sri Lanka. He is completing a BSc (Hons) in Information Technology specializing in Software Engineering at the Sri Lanka Institute of Information Technology (SLIIT). His work combines generative AI, retrieval-augmented generation, AI memory, realtime voice interaction, backend architecture, full-stack product development and Sinhala natural-language processing.
+
+## Professional experience
+
+- [SLIIT experience](https://nisalfonseka.com/experience): Software Engineer Intern - Gen AI Applications, October 2025 to present. Work includes enterprise chat platforms, RAG pipelines, multi-layer memory, multi-provider LLM integration and realtime voice systems.
+- [Sri Lanka Telecom experience](https://nisalfonseka.com/experience): Software Development Intern, January 2025 to July 2025, working in an enterprise telecommunications environment.
+
+## Projects
+
+- [SLIIT COEAI Chatbot](https://nisalfonseka.com/work/sliit-coeai-chatbot): Independently designed and developed enterprise AI chat platform used by 300+ students across Psychology, Computing and Business. Capabilities include document intelligence, AI personas, image generation, PostgreSQL pgvector RAG, conversation summarization, semantic user memory, long-term contextual retrieval, OpenAI Realtime API voice interaction and OpenAI, Anthropic Claude and xAI Grok integration.
+- [SLIIT Academic Chatbot Platform](https://nisalfonseka.com/work/sliit-academic-chatbot-platform): Independently developed module-specific academic assistant platform planned for 2,000+ first- and second-year students. Includes automated extraction, chunking and embedding pipelines, conversation memory, semantic student memory, knowledge-base retrieval and scalable backend architecture.
+- [SinAI - SinhalaJournalLLM](https://nisalfonseka.com/work/sinai): Final-year research project led by Nisal Fonseka. The grammar-correction component targets Sinhala spelling, grammar, punctuation and sentence structure. Research data includes 700K+ processed Sinhala news articles and a 36,000+ row correction dataset across 18 grammar categories. Confirmed evaluation results are 87.7% sentence-level accuracy and 75.0% accuracy on real-news paragraphs.
+- [SamadhiRice.lk](https://nisalfonseka.com/work/samadhirice): AI-powered e-commerce platform for a Sri Lankan rice brand. Its Rice Finder uses OpenAI and Gemini with live catalog, inventory and blog context for conversational product recommendations.
+
+## Capabilities
+
+- AI application architecture and implementation
+- Retrieval-augmented generation and pgvector search
+- LLM provider integration and prompt management
+- Conversation, semantic-user and long-term memory systems
+- Realtime voice AI with WebSockets
+- React, Next.js, TypeScript, Node.js and FastAPI development
+- PostgreSQL, Prisma, Drizzle and vector data systems
+- Sinhala NLP, dataset development and LoRA fine-tuning
+
+## Contact
+
+- [Project enquiry](https://nisalfonseka.com/contact): Contact form for AI and full-stack work.
+- Email: hello@nisalfonseka.com
+- [LinkedIn](https://www.linkedin.com/in/nisalfonseka/)
+- [GitHub](https://github.com/nisalfonseka)

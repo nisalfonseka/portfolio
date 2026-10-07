@@ -28,6 +28,17 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+h1,
+h2,
+h3 {
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
 ::selection {
   background: var(--signal);
   color: white;
@@ -104,6 +115,12 @@ a {
 @media (min-width: 768px) {
   .editorial-grid {
     background-size: calc((100vw - 6rem) / 6) 100%;
+  }
+}
+
+@media (max-width: 479px) {
+  .display {
+    letter-spacing: -0.055em;
   }
 }
 

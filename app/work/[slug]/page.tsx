@@ -1,23 +1,31 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, ArrowUpRight } from "lucide-react"
+import { ArrowRight, ArrowUpRight } from "lucide-react"
+import { Breadcrumbs } from "@/components/breadcrumbs"
+import { StructuredData } from "@/components/structured-data"
 import { getPublicSiteContent } from "@/lib/content-store"
+import { absoluteUrl, createPageMetadata, personSchemaId, websiteSchemaId } from "@/lib/seo"
 
 type Props = { params: Promise<{ slug: string }> }
 
-export const revalidate = 0
+export const revalidate = 300
+
+export async function generateStaticParams() {
+  const { projects } = await getPublicSiteContent()
+  return projects.map((project) => ({ slug: project.slug }))
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const { projects } = await getPublicSiteContent()
   const project = projects.find((item) => item.slug === slug)
   if (!project) return { title: "Work" }
-  return {
+  return createPageMetadata({
     title: project.title,
     description: project.summary,
-    alternates: { canonical: `/work/${project.slug}` },
-  }
+    path: `/work/${project.slug}`,
+  })
 }
 
 export default async function ProjectPage({ params }: Props) {
@@ -25,13 +33,42 @@ export default async function ProjectPage({ params }: Props) {
   const { projects } = await getPublicSiteContent()
   const project = projects.find((item) => item.slug === slug)
   if (!project) notFound()
+  const canonicalUrl = absoluteUrl(`/work/${project.slug}`)
+  const projectImage = project.image.startsWith("/") ? absoluteUrl(project.image) : project.image
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": `${canonicalUrl}#software`,
+        name: project.title,
+        url: canonicalUrl,
+        description: project.description,
+        applicationCategory: project.category,
+        operatingSystem: "Web",
+        image: projectImage,
+        keywords: project.tags.join(", "),
+        author: { "@id": personSchemaId },
+        isPartOf: { "@id": websiteSchemaId },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+          { "@type": "ListItem", position: 2, name: "Work", item: absoluteUrl("/work") },
+          { "@type": "ListItem", position: 3, name: project.title, item: canonicalUrl },
+        ],
+      },
+    ],
+  }
 
   return (
     <main className="page-shell">
       <article>
+        <StructuredData id="project-schema" data={structuredData} />
         <header className="border-b border-black/15 px-5 pb-14 pt-14 sm:px-8 lg:px-12 lg:pb-20 lg:pt-20">
           <div className="mx-auto max-w-[1440px]">
-            <Link href="/work" className="mb-16 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[.15em] text-black/50"><ArrowLeft size={15} /> All work</Link>
+            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Work", href: "/work" }, { label: project.title }]} />
             <h1 className="display max-w-6xl text-[clamp(4rem,11vw,10rem)] font-semibold">{project.title}</h1>
             <p className="mt-10 max-w-3xl text-lg leading-8 text-black/58">{project.description}</p>
             <div className="mt-14 grid gap-px border border-black/15 bg-black/15 sm:grid-cols-2 lg:grid-cols-4">
@@ -46,7 +83,7 @@ export default async function ProjectPage({ params }: Props) {
           <div className="mx-auto max-w-[1440px] overflow-hidden border border-black/15 bg-ink">
             {/* Admin-managed images may use local or remote URLs. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={project.image} alt={`${project.title} project visual`} className="aspect-[16/8] w-full object-cover" />
+            <img src={project.image} alt={`System overview for ${project.title}`} width={1600} height={800} className="aspect-[16/8] w-full object-cover" loading="lazy" decoding="async" />
           </div>
         </section>
 
@@ -85,6 +122,10 @@ export default async function ProjectPage({ params }: Props) {
                 {project.repoUrl && <a href={project.repoUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 border border-black/25 px-5 py-3 text-xs font-semibold uppercase tracking-[.14em]">View source <ArrowUpRight size={15} /></a>}
               </div>
             )}
+            <div className="mt-16 flex flex-col gap-4 border-t border-black/15 pt-8 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm text-black/55">Explore more AI systems and product engineering case studies.</p>
+              <div className="flex flex-wrap gap-5"><Link href="/work" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.14em]">All work <ArrowRight size={14} /></Link><Link href="/contact" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.14em]">Start a project <ArrowRight size={14} /></Link></div>
+            </div>
           </div>
         </section>
       </article>
