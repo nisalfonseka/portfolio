@@ -12,7 +12,11 @@ export async function GET() {
 export async function PUT(request: Request) {
   if (!(await isAdmin())) return NextResponse.json({ message: "Unauthorized" }, { status: 401 })
   const parsed = siteContentSchema.safeParse(await request.json())
-  if (!parsed.success) return NextResponse.json({ message: parsed.error.issues[0]?.message || "Invalid content" }, { status: 400 })
+  if (!parsed.success) {
+    const issue = parsed.error.issues[0]
+    const where = issue?.path.length ? `${issue.path.join(" › ")}: ` : ""
+    return NextResponse.json({ message: issue ? `${where}${issue.message}` : "Invalid content" }, { status: 400 })
+  }
 
   try {
     await saveSiteContent(parsed.data)
@@ -20,6 +24,7 @@ export async function PUT(request: Request) {
     revalidatePath("/work")
     revalidatePath("/work/[slug]", "page")
     revalidatePath("/achievements")
+    revalidatePath("/publications")
     revalidatePath("/sitemap.xml")
     return NextResponse.json({ saved: true })
   } catch (error) {

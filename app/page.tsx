@@ -3,6 +3,9 @@ import { ArrowRight, ArrowUpRight } from "lucide-react"
 import Hero from "@/components/ui/hero"
 import { ProjectList } from "@/components/project-list"
 import { AchievementGrid } from "@/components/achievement-grid"
+import { ContactForm } from "@/components/contact-form"
+import { AchievementStory, hasGallery } from "@/components/achievement-story"
+import { PublicationList } from "@/components/publication-list"
 import { Reveal } from "@/components/reveal"
 import { getPublicSiteContent } from "@/lib/content-store"
 import { experience, notes, services } from "@/lib/content"
@@ -18,6 +21,9 @@ const proof = [
 
 export default async function HomePage() {
   const content = await getPublicSiteContent()
+  const homeProjects = content.projects.filter((project) => project.showOnHome !== false)
+  const featuredStory = content.achievements.find(hasGallery)
+  const milestones = content.achievements.filter((item) => !hasGallery(item))
 
   return (
     <main>
@@ -50,7 +56,7 @@ export default async function HomePage() {
             <h2 className="display text-[clamp(3.5rem,8vw,8rem)] font-semibold">Selected work</h2>
             <Link href="/work" className="hidden items-center gap-2 border-b border-black pb-2 text-xs font-semibold uppercase tracking-[.15em] sm:inline-flex">All work <ArrowRight size={15} /></Link>
           </div>
-          <ProjectList projects={content.projects} limit={5} />
+          <ProjectList projects={homeProjects} />
         </div>
       </section>
 
@@ -76,8 +82,8 @@ export default async function HomePage() {
 
       <section className="px-5 py-20 sm:px-8 lg:px-12 lg:py-32">
         <div className="mx-auto max-w-[1440px]">
-          <div className="grid gap-12 lg:grid-cols-[.8fr_1.6fr]">
-            <h2 className="display text-[clamp(3.5rem,7vw,7rem)] font-semibold">Experience</h2>
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)]">
+            <h2 className="display text-[clamp(3.5rem,5.4vw,5.75rem)] font-semibold">Experience</h2>
             <div className="border-t border-black/20">
               {experience.map((item, index) => (
                 <Reveal key={item.company} delay={index * 0.06}>
@@ -114,6 +120,18 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {content.publications.length > 0 && (
+        <section className="px-5 pt-20 sm:px-8 lg:px-12 lg:pt-32">
+          <div className="mx-auto max-w-[1440px]">
+            <div className="mb-12 flex items-end justify-between gap-8">
+              <h2 className="display text-[clamp(3.5rem,8vw,8rem)] font-semibold">Publications</h2>
+              <Link href="/publications" className="hidden items-center gap-2 border-b border-black pb-2 text-xs font-semibold uppercase tracking-[.15em] sm:inline-flex">All publications <ArrowRight size={15} /></Link>
+            </div>
+            <PublicationList publications={content.publications} limit={3} compact />
+          </div>
+        </section>
+      )}
+
       <section className="px-5 py-20 sm:px-8 lg:px-12 lg:py-32">
         <div className="mx-auto max-w-[1440px]">
           <div className="mb-12 flex items-end justify-between gap-8">
@@ -140,20 +158,19 @@ export default async function HomePage() {
             <h2 className="display text-[clamp(3.5rem,8vw,8rem)] font-semibold">Recognition</h2>
             <Link href="/achievements" className="hidden items-center gap-2 border-b border-black pb-2 text-xs font-semibold uppercase tracking-[.15em] sm:inline-flex">View all <ArrowRight size={15} /></Link>
           </div>
-          <AchievementGrid achievements={content.achievements} limit={3} />
+          {featuredStory && <div className="mb-16 lg:mb-24"><AchievementStory achievement={featuredStory} maxTiles={6} /></div>}
+          <AchievementGrid achievements={milestones} limit={3} />
         </div>
       </section>
 
-      <section className="border-t border-black/15 px-5 py-20 sm:px-8 lg:px-12 lg:py-32">
-        <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[1.2fr_.8fr]">
-          <h2 className="display max-w-4xl text-[clamp(3.5rem,8vw,8rem)] font-semibold">Engineering the whole product.</h2>
-          <div className="self-end">
-            <p className="text-lg leading-8 text-black/60">I work across the AI layer, backend, database, authentication, interface and deployment—because useful AI depends on the complete system around it.</p>
-            <div className="mt-9 flex gap-6">
-              <Link href="/about" className="text-link text-xs font-semibold uppercase tracking-[.15em]">About me</Link>
-              <Link href="/lab" className="text-link text-xs font-semibold uppercase tracking-[.15em]">Visit the lab</Link>
-            </div>
+      <section id="start-a-project" className="border-t border-black/15 px-5 py-20 sm:px-8 lg:px-12 lg:py-32">
+        <div className="mx-auto grid max-w-[1440px] gap-14 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
+          <div>
+            <h2 className="display text-[clamp(3.5rem,6vw,6rem)] font-semibold">Have a project in mind?</h2>
+            <p className="mt-8 max-w-md text-base leading-7 text-black/58">Tell me what you’re building, the problem you’re solving and where you are in the process. A clear description of the users and constraints is enough to begin.</p>
+            <div className="mt-10 border-t border-black/20 pt-5 text-sm"><a className="font-semibold" href="mailto:hello@nisalfonseka.com">hello@nisalfonseka.com</a><p className="mt-2 text-black/45">Malabe, Sri Lanka · Available remotely worldwide</p></div>
           </div>
+          <Reveal><ContactForm /></Reveal>
         </div>
       </section>
     </main>

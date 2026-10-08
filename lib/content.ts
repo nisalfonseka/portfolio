@@ -18,6 +18,13 @@ export type Project = {
   image: string
   externalUrl?: string
   repoUrl?: string
+  /** Shown in the home page "Selected work" section. Older content without this flag is treated as shown. */
+  showOnHome?: boolean
+}
+
+export type GalleryImage = {
+  image: string
+  alt: string
 }
 
 export type Achievement = {
@@ -28,11 +35,30 @@ export type Achievement = {
   description: string
   image: string
   imageAlt: string
+  /** Optional event photos. Achievements with a gallery are shown as featured stories. */
+  gallery?: GalleryImage[]
+  location?: string
+  link?: string
+}
+
+export type Publication = {
+  id: string
+  title: string
+  authors: string
+  venue: string
+  year: string
+  type: string
+  status: string
+  abstract: string
+  url?: string
+  pdf?: string
+  doi?: string
 }
 
 export type SiteContent = {
   projects: Project[]
   achievements: Achievement[]
+  publications: Publication[]
 }
 
 export type Inquiry = {
@@ -78,6 +104,7 @@ export const defaultContent: SiteContent = {
         "Delivered document intelligence, AI personas, image generation and voice in one platform.",
         "Created a production-oriented multi-provider system instead of a single-model prototype.",
       ],
+      showOnHome: true,
       image: "/images/work-ai-assistant.svg",
     },
     {
@@ -108,6 +135,7 @@ export const defaultContent: SiteContent = {
         "Personalized learning context across conversation, student memory and module knowledge.",
         "A reusable ingestion pipeline for academic resources and future faculty expansion.",
       ],
+      showOnHome: true,
       image: "/images/work-academic.svg",
     },
     {
@@ -139,6 +167,7 @@ export const defaultContent: SiteContent = {
         "75.0% accuracy on real-news paragraphs.",
         "A 700K+ article Sinhala news corpus and a 36,000+ row dataset across 18 grammar categories.",
       ],
+      showOnHome: true,
       image: "/images/work-sinai.svg",
     },
     {
@@ -169,11 +198,32 @@ export const defaultContent: SiteContent = {
         "Delivered an AI Rice Finder grounded in live business data.",
         "Connected product discovery, recommendations and commerce workflows in one system.",
       ],
+      showOnHome: true,
       image: "/images/work-samadhi.svg",
       externalUrl: "https://samadhirice.lk",
     },
   ],
   achievements: [
+    {
+      id: "ai-expo-codeblast-hackathon-2026",
+      title: "SLTMobitel CodeBlast AI Hackathon",
+      year: "Sep 2026",
+      category: "Hackathon · University AI Innovation",
+      description:
+        "Pitched a Sinhala journalism AI system to the judging panel at the National AI Expo during Sri Lanka AI Week 2026—one platform that takes a raw article through understanding, grammar and spelling correction, summarisation, headline generation and style rewriting to publish-ready content.",
+      image: "/images/achievements/ai-expo-2026/pitch-stage.jpg",
+      imageAlt: "Nisal Fonseka's team presenting their Sinhala journalism AI system on stage at the AI Hackathon, Sri Lanka AI Week 2026",
+      location: "SLT Auditorium, Colombo",
+      gallery: [
+        { image: "/images/achievements/ai-expo-2026/team.jpg", alt: "The four-member team in front of the SLTMobitel CodeBlast Hackathon Challenge 2026 backdrop" },
+        { image: "/images/achievements/ai-expo-2026/pitch-team.jpg", alt: "Team presenting a journalism-focused AI system that helps prepare news content faster" },
+        { image: "/images/achievements/ai-expo-2026/judging-panel.jpg", alt: "Team answering questions from the judging panel at the National AI Expo" },
+        { image: "/images/achievements/ai-expo-2026/certificates.jpg", alt: "Team receiving certificates on stage at the CodeBlast Hackathon Challenge" },
+        { image: "/images/achievements/ai-expo-2026/judging-qa.jpg", alt: "Team member speaking to judges during the AI Hackathon question round" },
+        { image: "/images/achievements/ai-expo-2026/check-in.jpg", alt: "Team checking in with organisers at the National AI Expo hackathon venue" },
+        { image: "/images/achievements/ai-expo-2026/expo-hall.jpg", alt: "Main hall of the National AI Expo with stage lighting and a large audience" },
+      ],
+    },
     {
       id: "coeai-student-adoption",
       title: "300+ active student users",
@@ -225,6 +275,7 @@ export const defaultContent: SiteContent = {
       imageAlt: "Abstract evaluation graphic representing SinAI grammar correction results",
     },
   ],
+  publications: [],
 }
 
 export const services = [
@@ -314,7 +365,7 @@ export const experience = [
     contributions: ["SLIIT COEAI Chatbot", "Academic Chatbot Platform", "RAG and AI memory", "Realtime voice systems"],
   },
   {
-    role: "Software Engineer Intern",
+    role: "Software Development Intern",
     company: "Sri Lanka Telecom",
     period: "Jan 2025 — Jul 2025",
     description: "Contributed to software work in an enterprise telecommunications environment and gained experience with operational systems.",

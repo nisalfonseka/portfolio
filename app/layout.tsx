@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next"
 import { Montserrat } from "next/font/google"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
+import { SmoothScroll } from "@/components/smooth-scroll"
 import { StructuredData } from "@/components/structured-data"
 import { personSchemaId, siteUrl, websiteSchemaId } from "@/lib/seo"
 import "./globals.css"
@@ -109,6 +110,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="describedby" href="/llms.txt" />
       </head>
       <body>
+        <SmoothScroll />
         <SiteHeader />
         {children}
         <SiteFooter />

@@ -22,6 +22,7 @@ export function SiteFooter() {
             <Link className="text-link" href="/services">Services</Link>
             <Link className="text-link" href="/experience">Experience</Link>
             <Link className="text-link" href="/writing">Writing</Link>
+            <Link className="text-link" href="/publications">Publications</Link>
             <Link className="text-link" href="/contact">Contact</Link>
           </nav>
           <div className="flex flex-col items-start gap-3 text-sm text-white/75">

@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-const imageSchema = z.string().trim().min(1).max(1000).refine((value) => value.startsWith("/") || value.startsWith("https://") || value.startsWith("neon:"), "Use a local path, HTTPS image URL or Neon storage key")
+const imageSchema = z.string().trim().min(1).max(1000).refine((value) => value.startsWith("/") || value.startsWith("https://") || value.startsWith("neon:"), "Use a local path, HTTPS URL or Neon storage key")
 
 export const projectSchema = z.object({
   slug: z.string().trim().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).max(80),
@@ -22,7 +22,10 @@ export const projectSchema = z.object({
   image: imageSchema,
   externalUrl: z.union([z.url(), z.literal("")]).optional(),
   repoUrl: z.union([z.url(), z.literal("")]).optional(),
+  showOnHome: z.boolean().optional(),
 })
+
+const optionalUrl = z.union([z.url(), z.literal("")]).optional()
 
 export const achievementSchema = z.object({
   id: z.string().trim().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).max(80),
@@ -32,10 +35,29 @@ export const achievementSchema = z.object({
   description: z.string().trim().min(10).max(500),
   image: imageSchema,
   imageAlt: z.string().trim().min(5).max(250),
+  gallery: z.array(z.object({ image: imageSchema, alt: z.string().trim().min(5).max(250) })).max(24).optional(),
+  location: z.string().trim().max(120).optional(),
+  link: optionalUrl,
+})
+
+export const publicationSchema = z.object({
+  id: z.string().trim().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).max(80),
+  title: z.string().trim().min(2).max(300),
+  authors: z.string().trim().min(2).max(500),
+  venue: z.string().trim().max(200),
+  year: z.string().trim().min(2).max(40),
+  type: z.string().trim().min(2).max(60),
+  status: z.string().trim().min(2).max(60),
+  abstract: z.string().trim().max(3000),
+  url: optionalUrl,
+  pdf: z.union([imageSchema, z.literal("")]).optional(),
+  doi: z.string().trim().max(120).optional(),
 })
 
 export const siteContentSchema = z.object({
   projects: z.array(projectSchema).max(30),
   achievements: z.array(achievementSchema).max(60),
+  publications: z.array(publicationSchema).max(60).default([]),
 }).refine((value) => new Set(value.projects.map((item) => item.slug)).size === value.projects.length, "Project slugs must be unique")
   .refine((value) => new Set(value.achievements.map((item) => item.id)).size === value.achievements.length, "Achievement IDs must be unique")
+  .refine((value) => new Set(value.publications.map((item) => item.id)).size === value.publications.length, "Publication IDs must be unique")

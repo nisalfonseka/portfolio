@@ -27,23 +27,37 @@ async function writeLocal(fileName: string, data: unknown) {
   await fs.writeFile(path.join(dataDirectory, fileName), JSON.stringify(data, null, 2), "utf8")
 }
 
+// Content saved before a field existed is missing it; fill in defaults so older rows stay valid.
+function normalize(content: Partial<SiteContent>): SiteContent {
+  return {
+    projects: content.projects ?? defaultContent.projects,
+    achievements: content.achievements ?? defaultContent.achievements,
+    publications: content.publications ?? defaultContent.publications,
+  }
+}
+
 export async function getSiteContent(): Promise<SiteContent> {
   if (pool) {
     const result = await pool.query<{ data: SiteContent }>("SELECT data FROM portfolio_content WHERE id = $1 LIMIT 1", [CONTENT_KEY])
-    return result.rows[0]?.data ?? defaultContent
+    return normalize(result.rows[0]?.data ?? defaultContent)
   }
 
-  if (process.env.NODE_ENV !== "production") return readLocal("site-content.json", defaultContent)
+  if (process.env.NODE_ENV !== "production") return normalize(await readLocal("site-content.json", defaultContent))
   return defaultContent
 }
 
 export async function getPublicSiteContent(): Promise<SiteContent> {
   const content = await getSiteContent()
-  const [projects, achievements] = await Promise.all([
+  const [projects, achievements, publications] = await Promise.all([
     Promise.all(content.projects.map(async (project) => ({ ...project, image: await imageUrl(project.image) }))),
-    Promise.all(content.achievements.map(async (achievement) => ({ ...achievement, image: await imageUrl(achievement.image) }))),
+    Promise.all(content.achievements.map(async (achievement) => ({
+      ...achievement,
+      image: await imageUrl(achievement.image),
+      gallery: achievement.gallery && await Promise.all(achievement.gallery.map(async (item) => ({ ...item, image: await imageUrl(item.image) }))),
+    }))),
+    Promise.all(content.publications.map(async (publication) => ({ ...publication, pdf: publication.pdf ? await imageUrl(publication.pdf) : publication.pdf }))),
   ])
-  return { projects, achievements }
+  return { projects, achievements, publications }
 }
 
 export async function saveSiteContent(content: SiteContent) {

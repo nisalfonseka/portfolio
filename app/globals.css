@@ -16,7 +16,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   background: var(--paper);
 }
 
@@ -125,7 +124,6 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
@@ -134,7 +132,8 @@ a {
 }
 
 @media print {
-  .no-print { display: none !important; }
+  .no-print, body > header, body > footer { display: none !important; }
+  @page { margin: 14mm; }
   .page-shell { padding-top: 0; }
   body { background: white; }
 }
