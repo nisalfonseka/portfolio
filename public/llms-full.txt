@@ -27,6 +27,15 @@ Nisal Fonseka is an AI Application Engineer based in Malabe, Sri Lanka. He is co
 - PostgreSQL, Prisma, Drizzle and vector data systems
 - Sinhala NLP, dataset development and LoRA fine-tuning
 
+## Services for organizations adopting AI
+
+- [AI consulting for businesses in Sri Lanka and worldwide](https://nisalfonseka.com/services/ai-consulting-sri-lanka): Identifies and prioritizes practical AI opportunities, reviews data and integrations, and defines a focused pilot or implementation path.
+- [AI integration for existing software](https://nisalfonseka.com/services/ai-integration-services): Adds AI capabilities to current applications, portals, databases and internal systems without requiring a complete rebuild.
+- [AI automation for business workflows](https://nisalfonseka.com/services/ai-automation-for-business): Automates appropriate parts of document, customer-support and operational workflows while retaining human review for sensitive or uncertain decisions.
+- [RAG chatbot and AI assistant development](https://nisalfonseka.com/services/rag-ai-chatbot-development): Builds assistants grounded in controlled organizational knowledge with retrieval, citations, permissions and evaluation.
+- [Custom AI engineering](https://nisalfonseka.com/services/ai-engineering): Designs and implements reliable LLM applications, provider integrations, evaluation and production AI features.
+- [AI product development](https://nisalfonseka.com/services/ai-product-development): Combines product definition, UX, full-stack engineering and AI integration to deliver a focused MVP or production-oriented release.
+
 ## Contact
 
 - [Project enquiry](https://nisalfonseka.com/contact): Contact form for AI and full-stack work.
