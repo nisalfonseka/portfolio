@@ -38,7 +38,7 @@ export default async function ServicePage({ params }: Props) {
         url: canonicalUrl,
         description: service.description,
         provider: { "@id": personSchemaId },
-        areaServed: [{ "@type": "Country", name: "Sri Lanka" }, "Worldwide"],
+        areaServed: [{ "@type": "City", name: "Colombo" }, { "@type": "Country", name: "Sri Lanka" }, "Worldwide"],
         serviceType: service.title,
         audience: { "@type": "BusinessAudience", audienceType: "Small and medium-sized businesses, product teams and organizations adopting AI" },
       },
@@ -68,7 +68,7 @@ export default async function ServicePage({ params }: Props) {
       <header className="border-b border-black/15 px-5 pb-14 pt-14 sm:px-8 sm:pb-20 sm:pt-20 lg:px-12 lg:pb-24 lg:pt-24">
         <div className="mx-auto max-w-[1440px]">
           <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services", href: "/services" }, { label: service.title }]} />
-          <p className="mb-5 text-[11px] font-semibold uppercase tracking-[.14em] text-orange-700 sm:mb-6 sm:text-xs sm:tracking-[.16em]">Sri Lanka · Available worldwide</p>
+          <p className="mb-5 text-[11px] font-semibold uppercase tracking-[.14em] text-orange-700 sm:mb-6 sm:text-xs sm:tracking-[.16em]">Colombo &amp; Sri Lanka · Available worldwide</p>
           <h1 className="display max-w-6xl text-[clamp(2.25rem,6.5vw,6rem)] font-semibold">{service.heading}</h1>
           <p className="mt-7 max-w-4xl text-base leading-7 text-black/60 sm:mt-9 sm:text-lg sm:leading-8">{service.description}</p>
           <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row">

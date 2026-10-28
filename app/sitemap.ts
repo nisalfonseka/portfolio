@@ -6,7 +6,7 @@ import { absoluteUrl } from "@/lib/seo"
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { projects } = await getSiteContent()
   const contentUpdated = new Date("2026-10-07T00:00:00+05:30")
-  const servicesUpdated = new Date("2026-10-26T00:00:00+05:30")
+  const servicesUpdated = new Date("2026-10-28T00:00:00+05:30")
   const staticPages: { path: string; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"]; priority: number }[] = [
     { path: "/", changeFrequency: "weekly", priority: 1 },
     { path: "/work", changeFrequency: "weekly", priority: 0.9 },

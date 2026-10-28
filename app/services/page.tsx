@@ -5,17 +5,22 @@ import { businessAiServices, services, servicePages, type ServiceDetail } from "
 import { absoluteUrl, createPageMetadata } from "@/lib/seo"
 
 export const metadata = createPageMetadata({
-  title: "AI Consulting & Integration Services",
-  description: "AI consulting, integration, automation and custom AI development for businesses in Sri Lanka and worldwide—from the right use case to a working solution.",
+  title: "Freelance AI Services in Colombo, Sri Lanka",
+  description: "Freelance AI consulting, development, agents, chatbots, automation and custom AI solutions for businesses in Colombo, across Sri Lanka and worldwide.",
   path: "/services",
 })
 
 const serviceGuide = [
   ["You need to decide where AI can create value", "AI Consulting for Businesses", "/services/ai-consulting-sri-lanka"],
-  ["You want AI inside software you already use", "AI Integration for Existing Software", "/services/ai-integration-services"],
-  ["Your team repeats an information-heavy workflow", "AI Automation for Business Workflows", "/services/ai-automation-for-business"],
-  ["People need answers from your documents or knowledge", "RAG & AI Assistants", "/services/rag-ai-chatbot-development"],
-  ["You are creating a new AI-enabled product", "AI Product Development", "/services/ai-product-development"],
+  ["You need a complete custom AI application", "Custom AI Development", "/services/ai-development-sri-lanka"],
+  ["A multi-step task should use approved tools", "AI Agent Development", "/services/ai-agent-development-sri-lanka"],
+  ["Customers or staff need quick answers", "AI Chatbot Development", "/services/ai-chatbot-development-sri-lanka"],
+  ["Your team repeats an information-heavy workflow", "AI Automation", "/services/ai-automation-sri-lanka"],
+  ["You want AI inside software you already use", "AI Integration", "/services/ai-integration-sri-lanka"],
+  ["People need answers from your documents", "RAG & Knowledge Assistants", "/services/rag-ai-assistant-development-sri-lanka"],
+  ["Your team needs one focused internal utility", "Custom AI Tools", "/services/custom-ai-tools-sri-lanka"],
+  ["Staff need help while staying in control", "AI Copilot Development", "/services/ai-copilot-development-sri-lanka"],
+  ["You are creating a new AI-enabled product", "AI Product Development", "/services/ai-product-development-sri-lanka"],
 ]
 
 function ServiceGrid({ items }: { items: ServiceDetail[] }) {
@@ -39,9 +44,9 @@ export default function ServicesPage() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "AI consulting and development services by Nisal Fonseka",
+    name: "Freelance AI consulting and development services by Nisal Fonseka",
     url: absoluteUrl("/services"),
-    description: "AI consulting, integration, automation, RAG assistant, AI product and full-stack development services for businesses in Sri Lanka and worldwide.",
+    description: "Freelance AI consulting, development, agents, chatbots, automation, integration and AI product services for businesses in Colombo, Sri Lanka and worldwide.",
     mainEntity: {
       "@type": "ItemList",
       itemListElement: servicePages.map((service, index) => ({
@@ -58,8 +63,8 @@ export default function ServicesPage() {
       <StructuredData id="services-collection-schema" data={structuredData} />
       <header className="border-b border-black/15 px-5 pb-14 pt-16 sm:px-8 sm:pb-20 sm:pt-20 lg:px-12 lg:pb-24 lg:pt-28">
         <div className="mx-auto max-w-[1440px]">
-          <h1 className="display max-w-5xl text-[clamp(2.5rem,7vw,7rem)] font-semibold">AI services for businesses</h1>
-          <p className="mt-7 max-w-2xl text-sm leading-7 text-black/60 sm:mt-9 sm:text-lg">Practical consulting and engineering for companies adopting AI, improving existing software or building a focused AI product—from Sri Lanka to teams worldwide.</p>
+          <h1 className="display max-w-5xl text-[clamp(2.5rem,7vw,7rem)] font-semibold">Freelance AI services for businesses</h1>
+          <p className="mt-7 max-w-2xl text-sm leading-7 text-black/60 sm:mt-9 sm:text-lg">Simple, practical AI consulting and development for businesses in Colombo, across Sri Lanka and worldwide—from the right idea to working software.</p>
         </div>
       </header>
 

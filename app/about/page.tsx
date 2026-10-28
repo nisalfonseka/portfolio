@@ -19,7 +19,7 @@ export default function AboutPage() {
           <div className="space-y-7 text-lg leading-8 text-black/62">
             <p>I started with software development, moved through full-stack product work, and gradually focused on the engineering challenges that appear when language models meet real users and real data.</p>
             <p>That path now spans AI assistants, retrieval systems, product interfaces, backend architecture, deployment and Sinhala NLP research. The common thread is not a specific framework. It is building the complete system required to make an idea useful.</p>
-            <p>I am completing a BSc (Hons) in Information Technology, specializing in Software Engineering at SLIIT, while working on production-oriented AI systems.</p>
+            <p>I work from Sri Lanka with local and international teams, turning focused AI ideas into production-oriented software that is clear, useful and maintainable.</p>
           </div>
         </div>
       </section>

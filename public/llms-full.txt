@@ -2,7 +2,7 @@
 
 > A detailed, LLM-readable summary of the public information on nisalfonseka.com. Use the linked canonical pages when citing or verifying individual claims.
 
-Nisal Fonseka is an AI Application Engineer based in Malabe, Sri Lanka. He is completing a BSc (Hons) in Information Technology specializing in Software Engineering at the Sri Lanka Institute of Information Technology (SLIIT). His work combines generative AI, retrieval-augmented generation, AI memory, realtime voice interaction, backend architecture, full-stack product development and Sinhala natural-language processing.
+Nisal Fonseka is an AI Application Engineer based in Malabe, Sri Lanka. His work combines generative AI, retrieval-augmented generation, AI memory, realtime voice interaction, backend architecture, full-stack product development and Sinhala natural-language processing.
 
 ## Professional experience
 
@@ -13,7 +13,7 @@ Nisal Fonseka is an AI Application Engineer based in Malabe, Sri Lanka. He is co
 
 - [SLIIT COEAI Chatbot](https://nisalfonseka.com/work/sliit-coeai-chatbot): Independently designed and developed enterprise AI chat platform used by 300+ students across Psychology, Computing and Business. Capabilities include document intelligence, AI personas, image generation, PostgreSQL pgvector RAG, conversation summarization, semantic user memory, long-term contextual retrieval, OpenAI Realtime API voice interaction and OpenAI, Anthropic Claude and xAI Grok integration.
 - [SLIIT Academic Chatbot Platform](https://nisalfonseka.com/work/sliit-academic-chatbot-platform): Independently developed module-specific academic assistant platform planned for 2,000+ first- and second-year students. Includes automated extraction, chunking and embedding pipelines, conversation memory, semantic student memory, knowledge-base retrieval and scalable backend architecture.
-- [SinAI - SinhalaJournalLLM](https://nisalfonseka.com/work/sinai): Final-year research project led by Nisal Fonseka. The grammar-correction component targets Sinhala spelling, grammar, punctuation and sentence structure. Research data includes 700K+ processed Sinhala news articles and a 36,000+ row correction dataset across 18 grammar categories. Confirmed evaluation results are 87.7% sentence-level accuracy and 75.0% accuracy on real-news paragraphs.
+- [SinAI - SinhalaJournalLLM](https://nisalfonseka.com/work/sinai): Sinhala language AI research led by Nisal Fonseka. The grammar-correction component targets Sinhala spelling, grammar, punctuation and sentence structure. Research data includes 700K+ processed Sinhala news articles and a 36,000+ row correction dataset across 18 grammar categories. Confirmed evaluation results are 87.7% sentence-level accuracy and 75.0% accuracy on real-news paragraphs.
 - [SamadhiRice.lk](https://nisalfonseka.com/work/samadhirice): AI-powered e-commerce platform for a Sri Lankan rice brand. Its Rice Finder uses OpenAI and Gemini with live catalog, inventory and blog context for conversational product recommendations.
 
 ## Capabilities
@@ -29,12 +29,20 @@ Nisal Fonseka is an AI Application Engineer based in Malabe, Sri Lanka. He is co
 
 ## Services for organizations adopting AI
 
-- [AI consulting for businesses in Sri Lanka and worldwide](https://nisalfonseka.com/services/ai-consulting-sri-lanka): Identifies and prioritizes practical AI opportunities, reviews data and integrations, and defines a focused pilot or implementation path.
-- [AI integration for existing software](https://nisalfonseka.com/services/ai-integration-services): Adds AI capabilities to current applications, portals, databases and internal systems without requiring a complete rebuild.
-- [AI automation for business workflows](https://nisalfonseka.com/services/ai-automation-for-business): Automates appropriate parts of document, customer-support and operational workflows while retaining human review for sensitive or uncertain decisions.
-- [RAG chatbot and AI assistant development](https://nisalfonseka.com/services/rag-ai-chatbot-development): Builds assistants grounded in controlled organizational knowledge with retrieval, citations, permissions and evaluation.
-- [Custom AI engineering](https://nisalfonseka.com/services/ai-engineering): Designs and implements reliable LLM applications, provider integrations, evaluation and production AI features.
-- [AI product development](https://nisalfonseka.com/services/ai-product-development): Combines product definition, UX, full-stack engineering and AI integration to deliver a focused MVP or production-oriented release.
+- [AI services and custom solutions](https://nisalfonseka.com/services/ai-services-sri-lanka): Freelance AI consulting, development and delivery for businesses in Colombo, across Sri Lanka and worldwide.
+- [AI consulting](https://nisalfonseka.com/services/ai-consulting-sri-lanka): Identifies useful AI opportunities and defines a focused pilot or implementation plan.
+- [Custom AI development](https://nisalfonseka.com/services/ai-development-sri-lanka): Builds complete AI applications around a clear business problem and user workflow.
+- [AI agent development](https://nisalfonseka.com/services/ai-agent-development-sri-lanka): Builds agents that follow controlled steps, use approved tools and include human approval.
+- [AI chatbot development](https://nisalfonseka.com/services/ai-chatbot-development-sri-lanka): Builds customer and staff chatbots with approved business knowledge and human handover.
+- [AI automation](https://nisalfonseka.com/services/ai-automation-sri-lanka): Reduces repeated document, customer-request and operational work while keeping people in control.
+- [AI integration](https://nisalfonseka.com/services/ai-integration-sri-lanka): Adds useful AI features to current applications, portals, databases and internal systems.
+- [RAG and knowledge assistants](https://nisalfonseka.com/services/rag-ai-assistant-development-sri-lanka): Builds assistants grounded in controlled documents and business information.
+- [Custom AI tools](https://nisalfonseka.com/services/custom-ai-tools-sri-lanka): Builds focused internal tools for tasks that do not fit a general chatbot.
+- [AI copilot development](https://nisalfonseka.com/services/ai-copilot-development-sri-lanka): Creates role-specific AI helpers that support staff while people keep final control.
+- [Generative AI and LLM development](https://nisalfonseka.com/services/generative-ai-development-sri-lanka): Builds text, document, search and conversational applications using modern language models.
+- [AI product development](https://nisalfonseka.com/services/ai-product-development-sri-lanka): Combines product definition, full-stack engineering and AI integration to deliver a focused MVP or release.
+- [Document AI](https://nisalfonseka.com/services/document-ai-solutions-sri-lanka): Extracts, sorts, summarizes and searches business documents with review for uncertain cases.
+- [Sinhala and multilingual AI](https://nisalfonseka.com/services/multilingual-ai-solutions-sri-lanka): Builds language-aware features for Sinhala, English and multilingual user workflows.
 
 ## Contact
 
