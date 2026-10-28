@@ -1,5 +1,7 @@
+import { MessageCircle } from "lucide-react"
 import { ContactForm } from "@/components/contact-form"
 import { PageHeading } from "@/components/page-heading"
+import { whatsappDisplayNumber, whatsappUrl } from "@/lib/contact"
 import { createPageMetadata } from "@/lib/seo"
 
 export const metadata = createPageMetadata({
@@ -17,7 +19,7 @@ export default function ContactPage() {
           <div>
             <h2 className="text-2xl font-semibold tracking-[-.04em]">Start with the context.</h2>
             <p className="mt-5 max-w-sm text-sm leading-7 text-black/55">You do not need a finished specification. A clear description of the users, problem and constraints is enough to begin.</p>
-            <div className="mt-10 border-t border-black/20 pt-5 text-sm"><a className="font-semibold" href="mailto:hello@nisalfonseka.com">hello@nisalfonseka.com</a><p className="mt-2 text-black/45">Malabe, Sri Lanka · Available remotely worldwide</p></div>
+            <div className="mt-10 border-t border-black/20 pt-5 text-sm"><a className="font-semibold" href="mailto:hello@nisalfonseka.com">hello@nisalfonseka.com</a><p className="mt-2 text-black/45">Malabe, Sri Lanka · Available remotely worldwide</p><a href={whatsappUrl} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 bg-[#25D366] px-5 py-3 text-xs font-semibold uppercase tracking-[.14em] text-[#092b16] transition-colors hover:bg-[#31e572]"><MessageCircle size={16} /> WhatsApp {whatsappDisplayNumber}</a></div>
           </div>
           <ContactForm />
         </div>

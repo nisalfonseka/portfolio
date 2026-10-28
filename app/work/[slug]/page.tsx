@@ -1,10 +1,11 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowRight, ArrowUpRight } from "lucide-react"
+import { ArrowRight, ArrowUpRight, MessageCircle } from "lucide-react"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import { StructuredData } from "@/components/structured-data"
 import { getPublicSiteContent } from "@/lib/content-store"
+import { whatsappUrl } from "@/lib/contact"
 import { absoluteUrl, createPageMetadata, personSchemaId, websiteSchemaId } from "@/lib/seo"
 
 type Props = { params: Promise<{ slug: string }> }
@@ -124,7 +125,7 @@ export default async function ProjectPage({ params }: Props) {
             )}
             <div className="mt-16 flex flex-col gap-4 border-t border-black/15 pt-8 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-sm text-black/55">Explore more AI systems and product engineering case studies.</p>
-              <div className="flex flex-wrap gap-5"><Link href="/work" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.14em]">All work <ArrowRight size={14} /></Link><Link href="/contact" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.14em]">Start a project <ArrowRight size={14} /></Link></div>
+              <div className="flex flex-wrap gap-5"><Link href="/work" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.14em]">All work <ArrowRight size={14} /></Link><Link href="/contact" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.14em]">Start a project <ArrowRight size={14} /></Link><a href={whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.14em]"><MessageCircle size={14} /> WhatsApp</a></div>
             </div>
           </div>
         </section>

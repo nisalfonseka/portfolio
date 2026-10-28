@@ -211,7 +211,7 @@ function PublicationEditor({ publication, update }: { publication: Publication; 
     <div className="grid gap-6">
       <label className={label}>Title<textarea value={publication.title} onChange={(e) => set("title", e.target.value)} rows={2} className={field} /></label>
       <div className="grid gap-5 sm:grid-cols-[1fr_200px]"><label className={label}>Authors, comma separated<input value={publication.authors} onChange={(e) => set("authors", e.target.value)} className={field} placeholder="Nisal Fonseka, Co-author Name" /></label><label className={label}>ID<input value={publication.id} onChange={(e) => set("id", e.target.value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""))} className={field} /></label></div>
-      <label className={label}>Venue — journal, conference or repository<input value={publication.venue} onChange={(e) => set("venue", e.target.value)} className={field} placeholder="Proceedings of …" /></label>
+      <label className={label}>Venue (journal, conference or repository)<input value={publication.venue} onChange={(e) => set("venue", e.target.value)} className={field} placeholder="Proceedings of …" /></label>
       <div className="grid gap-5 sm:grid-cols-3">
         <label className={label}>Year<input value={publication.year} onChange={(e) => set("year", e.target.value)} className={field} /></label>
         <label className={label}>Type<input list="publication-types" value={publication.type} onChange={(e) => set("type", e.target.value)} className={field} /></label>

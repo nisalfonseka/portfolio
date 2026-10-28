@@ -1,10 +1,11 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowRight, ArrowUpRight, Check } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Check, MessageCircle } from "lucide-react"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import { StructuredData } from "@/components/structured-data"
 import { servicePages } from "@/lib/content"
+import { whatsappUrl } from "@/lib/contact"
 import { absoluteUrl, createPageMetadata, personSchemaId } from "@/lib/seo"
 
 type Props = { params: Promise<{ slug: string }> }
@@ -73,6 +74,7 @@ export default async function ServicePage({ params }: Props) {
           <p className="mt-7 max-w-4xl text-base leading-7 text-black/60 sm:mt-9 sm:text-lg sm:leading-8">{service.description}</p>
           <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row">
             <Link href="/contact" className="inline-flex items-center justify-center gap-3 bg-ink px-6 py-4 text-xs font-semibold uppercase tracking-[.15em] text-white transition-colors hover:bg-orange-600">Discuss your use case <ArrowRight size={16} /></Link>
+            <a href={whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-3 bg-[#25D366] px-6 py-4 text-xs font-semibold uppercase tracking-[.15em] text-[#092b16] transition-colors hover:bg-[#31e572]"><MessageCircle size={16} /> WhatsApp</a>
             <Link href="/work" className="inline-flex items-center justify-center gap-3 border border-black/25 px-6 py-4 text-xs font-semibold uppercase tracking-[.15em] transition-colors hover:bg-white">View relevant work <ArrowUpRight size={16} /></Link>
           </div>
         </div>
@@ -160,7 +162,7 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       <section className="border-t border-black/15 bg-orange-600 px-5 py-14 text-white sm:px-8 sm:py-20 lg:px-12 lg:py-24">
-        <div className="mx-auto grid max-w-[1440px] gap-8 lg:grid-cols-[1fr_auto] lg:items-end"><div><p className="text-xs font-semibold uppercase tracking-[.16em] text-white/65">No finished specification required</p><h2 className="display mt-5 max-w-4xl text-[clamp(2.5rem,6vw,6rem)] font-semibold">Tell me what is slowing the business down.</h2><p className="mt-7 max-w-2xl text-base leading-7 text-white/75">A clear description of the workflow, users and current systems is enough to start a useful conversation.</p></div><Link href="/contact" className="inline-flex items-center justify-center gap-3 bg-white px-6 py-4 text-xs font-semibold uppercase tracking-[.15em] text-black transition-colors hover:bg-ink hover:text-white">Start the conversation <ArrowRight size={16} /></Link></div>
+        <div className="mx-auto grid max-w-[1440px] gap-8 lg:grid-cols-[1fr_auto] lg:items-end"><div><p className="text-xs font-semibold uppercase tracking-[.16em] text-white/65">No finished specification required</p><h2 className="display mt-5 max-w-4xl text-[clamp(2.5rem,6vw,6rem)] font-semibold">Tell me what is slowing the business down.</h2><p className="mt-7 max-w-2xl text-base leading-7 text-white/75">A clear description of the workflow, users and current systems is enough to start a useful conversation.</p></div><div className="flex flex-col gap-3 sm:flex-row"><Link href="/contact" className="inline-flex items-center justify-center gap-3 bg-white px-6 py-4 text-xs font-semibold uppercase tracking-[.15em] text-black transition-colors hover:bg-ink hover:text-white">Start the conversation <ArrowRight size={16} /></Link><a href={whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-3 bg-[#25D366] px-6 py-4 text-xs font-semibold uppercase tracking-[.15em] text-[#092b16] transition-colors hover:bg-[#31e572]"><MessageCircle size={16} /> WhatsApp</a></div></div>
       </section>
     </main>
   )

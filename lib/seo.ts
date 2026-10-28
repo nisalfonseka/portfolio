@@ -9,7 +9,7 @@ export function absoluteUrl(path = "/") {
 
 export function createPageMetadata({ title, description, path }: { title: string; description: string; path: string }): Metadata {
   const url = absoluteUrl(path)
-  const socialTitle = `${title} — ${siteName}`
+  const socialTitle = `${title} - ${siteName}`
 
   return {
     title,

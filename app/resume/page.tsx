@@ -95,7 +95,7 @@ export default function ResumePage() {
           <h2 className={headingClass}>References</h2>
           <div className="grid gap-6 text-sm sm:grid-cols-2">
             {resume.references.map((reference) => (
-              <div key={reference.name}><p className="font-semibold">{reference.name}</p><p className="mt-1 text-black/60">{reference.title} — {reference.organisation}</p></div>
+              <div key={reference.name}><p className="font-semibold">{reference.name}</p><p className="mt-1 text-black/60">{reference.title}, {reference.organisation}</p></div>
             ))}
             <p className="text-xs text-black/45 sm:col-span-2">Contact details available on request.</p>
           </div>

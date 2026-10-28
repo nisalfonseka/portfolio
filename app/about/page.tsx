@@ -1,6 +1,7 @@
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, MessageCircle } from "lucide-react"
 import { PageHeading } from "@/components/page-heading"
+import { whatsappUrl } from "@/lib/contact"
 import { createPageMetadata } from "@/lib/seo"
 
 export const metadata = createPageMetadata({
@@ -37,6 +38,7 @@ export default function AboutPage() {
           <div className="border-t border-black/20">
             {[["Building", "Academic AI products and reliable retrieval systems"], ["Researching", "Sinhala language models and grammar correction"], ["Exploring", "Evaluation, agentic systems and voice AI"], ["Available for", "Selected AI and full-stack software projects"]].map(([label, value]) => <div key={label} className="grid gap-2 border-b border-black/20 py-5 sm:grid-cols-[130px_1fr]"><strong className="text-xs uppercase tracking-[.13em] text-black/40">{label}</strong><span className="text-sm font-medium">{value}</span></div>)}
             <Link href="/contact" className="mt-9 inline-flex items-center gap-2 border-b border-black pb-2 text-xs font-semibold uppercase tracking-[.15em]">Start a conversation <ArrowRight size={15} /></Link>
+            <a href={whatsappUrl} target="_blank" rel="noreferrer" className="mt-9 ml-6 inline-flex items-center gap-2 border-b border-black pb-2 text-xs font-semibold uppercase tracking-[.15em]"><MessageCircle size={15} /> WhatsApp</a>
           </div>
         </div>
       </section>

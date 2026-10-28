@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight, ArrowUpRight } from "lucide-react"
+import { ArrowRight, ArrowUpRight, MessageCircle } from "lucide-react"
 import Hero from "@/components/ui/hero"
 import { ProjectList } from "@/components/project-list"
 import { AchievementGrid } from "@/components/achievement-grid"
@@ -9,6 +9,7 @@ import { PublicationList } from "@/components/publication-list"
 import { Reveal } from "@/components/reveal"
 import { getPublicSiteContent } from "@/lib/content-store"
 import { experience, notes, services } from "@/lib/content"
+import { whatsappUrl } from "@/lib/contact"
 
 export const revalidate = 300
 
@@ -168,7 +169,7 @@ export default async function HomePage() {
           <div>
             <h2 className="display text-[clamp(3.5rem,6vw,6rem)] font-semibold">Have a project in mind?</h2>
             <p className="mt-8 max-w-md text-base leading-7 text-black/58">Tell me what you’re building, the problem you’re solving and where you are in the process. A clear description of the users and constraints is enough to begin.</p>
-            <div className="mt-10 border-t border-black/20 pt-5 text-sm"><a className="font-semibold" href="mailto:hello@nisalfonseka.com">hello@nisalfonseka.com</a><p className="mt-2 text-black/45">Malabe, Sri Lanka · Available remotely worldwide</p></div>
+            <div className="mt-10 border-t border-black/20 pt-5 text-sm"><a className="font-semibold" href="mailto:hello@nisalfonseka.com">hello@nisalfonseka.com</a><p className="mt-2 text-black/45">Malabe, Sri Lanka · Available remotely worldwide</p><a href={whatsappUrl} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 bg-[#25D366] px-5 py-3 text-xs font-semibold uppercase tracking-[.14em] text-[#092b16] transition-colors hover:bg-[#31e572]"><MessageCircle size={16} /> Chat on WhatsApp</a></div>
           </div>
           <Reveal><ContactForm /></Reveal>
         </div>

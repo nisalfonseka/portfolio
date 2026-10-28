@@ -13,7 +13,7 @@ export const metadata = createPageMetadata({
 export default function WritingPage() {
   return (
     <main className="page-shell">
-      <PageHeading title="Engineering notes" intro="Practical observations from systems I have built, evaluated and learned from—not generic AI explainers." />
+      <PageHeading title="Engineering notes" intro="Practical observations from systems I have built, evaluated and learned from, not generic AI explainers." />
       <section className="px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
         <div className="mx-auto max-w-[1440px] border-t border-black/20">
           {notes.map((note, index) => (

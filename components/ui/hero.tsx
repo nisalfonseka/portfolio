@@ -1,10 +1,11 @@
 "use client"
 
 import { motion, useReducedMotion } from "framer-motion"
-import { ArrowDownRight, ArrowUpRight } from "lucide-react"
+import { ArrowDownRight, ArrowUpRight, MessageCircle } from "lucide-react"
 import dynamic from "next/dynamic"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { whatsappUrl } from "@/lib/contact"
 
 const HeroEffects = dynamic(() => import("@/components/ui/hero-effects"), { ssr: false })
 
@@ -62,6 +63,7 @@ export default function Hero() {
             <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-white px-5 py-3 text-[11px] font-semibold uppercase tracking-[.15em] text-black transition-colors hover:bg-orange-500 hover:text-white">
               Start a project <ArrowUpRight size={15} />
             </Link>
+            <a href={whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 bg-[#25D366] px-5 py-3 text-[11px] font-semibold uppercase tracking-[.15em] text-[#092b16] transition-colors hover:bg-[#31e572]"><MessageCircle size={15} /> WhatsApp</a>
           </div>
         </motion.div>
       </div>

@@ -1,4 +1,4 @@
-# Nisal Fonseka — Engineering Portfolio
+# Nisal Fonseka - Engineering Portfolio
 
 A full Next.js portfolio and content admin for `nisalfonseka.com`. The public site presents selected work, case studies, services, experience, research, recognition, engineering notes and a client contact flow. The private admin manages projects, achievement images, incoming inquiries and client email.
 

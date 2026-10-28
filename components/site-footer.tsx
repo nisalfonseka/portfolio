@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, MessageCircle } from "lucide-react"
+import { whatsappDisplayNumber, whatsappUrl } from "@/lib/contact"
 
 export function SiteFooter() {
   return (
@@ -16,6 +17,7 @@ export function SiteFooter() {
             <p className="font-semibold">Malabe, Sri Lanka</p>
             <p className="text-white/55">Working remotely worldwide</p>
             <a className="text-link inline-block text-white/75" href="mailto:hello@nisalfonseka.com">hello@nisalfonseka.com</a>
+            <a className="inline-flex items-center gap-2 text-[#61e990]" href={whatsappUrl} target="_blank" rel="noreferrer"><MessageCircle size={16} /> WhatsApp {whatsappDisplayNumber}</a>
           </div>
           <div className="grid grid-cols-2 gap-6 sm:contents">
             <nav className="flex flex-col items-start gap-2.5 text-sm text-white/75 sm:gap-3" aria-label="Footer navigation">

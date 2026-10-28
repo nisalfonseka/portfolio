@@ -19,7 +19,7 @@ export default async function PublicationsPage() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Research Publications — Nisal Fonseka",
+    name: "Research Publications - Nisal Fonseka",
     url: absoluteUrl("/publications"),
     hasPart: publications.map((publication) => ({
       "@type": "ScholarlyArticle",
@@ -35,7 +35,7 @@ export default async function PublicationsPage() {
 
   return (
     <main className="page-shell">
-      <PageHeading title="Publications" intro="Research papers, conference work and preprints—mostly on Sinhala language technology and applied large language models." />
+      <PageHeading title="Publications" intro="Research papers, conference work and preprints, mostly on Sinhala language technology and applied large language models." />
       <section className="px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
         <div className="mx-auto max-w-[1440px]">
           {publications.length > 0 ? (

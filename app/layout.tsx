@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: "Nisal Fonseka Portfolio",
   title: {
-    default: "Nisal Fonseka — AI Application Engineer",
-    template: "%s — Nisal Fonseka",
+    default: "Nisal Fonseka - Freelance AI Developer in Sri Lanka",
+    template: "%s - Nisal Fonseka",
   },
   description:
     "AI application engineer building production-grade LLM applications, RAG systems and full-stack software products.",
@@ -31,12 +31,12 @@ export const metadata: Metadata = {
     locale: "en_LK",
     url: siteUrl,
     siteName: "Nisal Fonseka",
-    title: "Nisal Fonseka — AI Application Engineer",
-    description: "I build AI-powered products end-to-end—from retrieval and model orchestration to polished web applications.",
+    title: "Nisal Fonseka - Freelance AI Developer in Sri Lanka",
+    description: "I build AI-powered products end-to-end, from retrieval and model orchestration to polished web applications.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nisal Fonseka — AI Application Engineer",
+    title: "Nisal Fonseka - Freelance AI Developer in Sri Lanka",
     description: "AI application engineer building production-grade LLM applications, RAG systems and full-stack software products.",
   },
   icons: {
@@ -86,6 +86,7 @@ const structuredData = {
       url: siteUrl,
       image: `${siteUrl}/images/siteicon.png`,
       email: "mailto:hello@nisalfonseka.com",
+      telephone: "+94710767697",
       address: { "@type": "PostalAddress", addressLocality: "Malabe", addressCountry: "LK" },
       alumniOf: { "@type": "CollegeOrUniversity", name: "Sri Lanka Institute of Information Technology" },
       sameAs: ["https://github.com/nisalfonseka", "https://www.linkedin.com/in/nisalfonseka/"],
@@ -96,7 +97,7 @@ const structuredData = {
       "@type": "ProfilePage",
       "@id": `${siteUrl}/#profile-page`,
       url: siteUrl,
-      name: "Nisal Fonseka — AI Application Engineer",
+      name: "Nisal Fonseka - Freelance AI Developer in Sri Lanka",
       isPartOf: { "@id": websiteSchemaId },
       mainEntity: { "@id": personSchemaId },
     },

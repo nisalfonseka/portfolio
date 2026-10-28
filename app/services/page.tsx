@@ -1,7 +1,8 @@
 import Link from "next/link"
-import { ArrowRight, ArrowUpRight } from "lucide-react"
+import { ArrowRight, ArrowUpRight, MessageCircle } from "lucide-react"
 import { StructuredData } from "@/components/structured-data"
 import { businessAiServices, services, servicePages, type ServiceDetail } from "@/lib/content"
+import { whatsappUrl } from "@/lib/contact"
 import { absoluteUrl, createPageMetadata } from "@/lib/seo"
 
 export const metadata = createPageMetadata({
@@ -64,7 +65,7 @@ export default function ServicesPage() {
       <header className="border-b border-black/15 px-5 pb-14 pt-16 sm:px-8 sm:pb-20 sm:pt-20 lg:px-12 lg:pb-24 lg:pt-28">
         <div className="mx-auto max-w-[1440px]">
           <h1 className="display max-w-5xl text-[clamp(2.5rem,7vw,7rem)] font-semibold">Freelance AI services for businesses</h1>
-          <p className="mt-7 max-w-2xl text-sm leading-7 text-black/60 sm:mt-9 sm:text-lg">Simple, practical AI consulting and development for businesses in Colombo, across Sri Lanka and worldwide—from the right idea to working software.</p>
+          <p className="mt-7 max-w-2xl text-sm leading-7 text-black/60 sm:mt-9 sm:text-lg">Simple, practical AI consulting and development for businesses in Colombo, across Sri Lanka and worldwide, from the right idea to working software.</p>
         </div>
       </header>
 
@@ -72,7 +73,7 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-[1440px]">
           <div className="mb-10 grid gap-6 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
             <h2 className="display text-[clamp(2.5rem,6vw,6rem)] font-semibold">Adopt AI with a clear business case</h2>
-            <p className="max-w-2xl text-base leading-7 text-black/58 lg:justify-self-end">Start with the business problem, the people doing the work and the systems already in place. The right first project may be a small automation, an integration into existing software or a custom product—not AI for its own sake.</p>
+            <p className="max-w-2xl text-base leading-7 text-black/58 lg:justify-self-end">Start with the business problem, the people doing the work and the systems already in place. The right first project may be a small automation, an integration into existing software or a custom product, not AI for its own sake.</p>
           </div>
           <ServiceGrid items={businessAiServices} />
         </div>
@@ -122,7 +123,7 @@ export default function ServicesPage() {
       <section className="bg-ink px-5 py-14 text-white sm:px-8 sm:py-20 lg:px-12 lg:py-28">
         <div className="mx-auto grid max-w-[1440px] gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
           <div><p className="text-xs font-semibold uppercase tracking-[.16em] text-orange-400">Sri Lanka · Remote worldwide</p><h2 className="display mt-5 max-w-4xl text-[clamp(2.5rem,6vw,6rem)] font-semibold">Start with the business problem.</h2><p className="mt-7 max-w-2xl text-base leading-7 text-white/60">You do not need a finished AI specification. Bring the workflow, bottleneck or product opportunity, and I can help determine the most practical next step.</p></div>
-          <Link href="/contact" className="inline-flex items-center justify-center gap-3 bg-white px-6 py-4 text-xs font-semibold uppercase tracking-[.15em] text-black transition-colors hover:bg-orange-500 hover:text-white">Discuss your use case <ArrowRight size={16} /></Link>
+          <div className="flex flex-col gap-3 sm:flex-row"><Link href="/contact" className="inline-flex items-center justify-center gap-3 bg-white px-6 py-4 text-xs font-semibold uppercase tracking-[.15em] text-black transition-colors hover:bg-orange-500 hover:text-white">Discuss your use case <ArrowRight size={16} /></Link><a href={whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-3 bg-[#25D366] px-6 py-4 text-xs font-semibold uppercase tracking-[.15em] text-[#092b16] transition-colors hover:bg-[#31e572]"><MessageCircle size={16} /> WhatsApp</a></div>
         </div>
       </section>
     </main>

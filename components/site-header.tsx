@@ -3,8 +3,9 @@
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X } from "lucide-react"
+import { Menu, MessageCircle, X } from "lucide-react"
 import { useEffect, useState } from "react"
+import { whatsappUrl } from "@/lib/contact"
 
 const navigation = [
   ["Work", "/work"],
@@ -52,30 +53,36 @@ export function SiteHeader() {
           <span className="text-[12px] font-semibold uppercase tracking-[0.18em]">Nisal Fonseka</span>
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-5 xl:flex" aria-label="Main navigation">
           {navigation.map(([label, href]) => (
             <Link key={href} href={href} aria-current={pathname === href ? "page" : undefined} className={`text-[11px] font-semibold uppercase tracking-[0.16em] transition-opacity hover:opacity-55 ${pathname === href ? "opacity-100" : "opacity-70"}`}>
               {label}
             </Link>
           ))}
+          <a href={whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-[#25D366] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#092b16] transition-colors hover:bg-[#31e572]">
+            <MessageCircle size={14} /> WhatsApp
+          </a>
           <Link href="/resume" className={`border px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors ${darkHeader ? "border-white/40 hover:bg-white hover:text-black" : "border-black/30 hover:bg-black hover:text-white"}`}>
             Résumé
           </Link>
         </nav>
 
-        <button type="button" className="grid size-10 place-items-center lg:hidden" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-label="Toggle navigation">
+        <button type="button" className="grid size-10 place-items-center xl:hidden" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-label="Toggle navigation">
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
       {open && (
-        <nav className={`px-5 py-6 lg:hidden ${darkHeader ? "bg-black/95" : "bg-paper"}`} aria-label="Mobile navigation">
+        <nav className={`px-5 py-6 xl:hidden ${darkHeader ? "bg-black/95" : "bg-paper"}`} aria-label="Mobile navigation">
           <div className="grid gap-1">
             {[...navigation, ["Résumé", "/resume"]].map(([label, href]) => (
               <Link key={href} href={href} onClick={() => setOpen(false)} className="border-b border-current/10 py-4 text-lg font-semibold">
                 {label}
               </Link>
             ))}
+            <a href={whatsappUrl} target="_blank" rel="noreferrer" onClick={() => setOpen(false)} className="mt-4 inline-flex items-center justify-center gap-2 bg-[#25D366] px-5 py-4 text-sm font-semibold uppercase tracking-[.14em] text-[#092b16]">
+              <MessageCircle size={17} /> Chat on WhatsApp
+            </a>
           </div>
         </nav>
       )}

@@ -111,7 +111,7 @@ export const defaultContent: SiteContent = {
       metric: "300+",
       metricLabel: "active student users",
       role: "Solo Developer · Gen AI Applications Intern",
-      timeline: "Oct 2025 — Present",
+      timeline: "Oct 2025 - Present",
       status: "Active at SLIIT",
       problem:
         "Students and researchers across several departments needed one capable AI workspace that could reason over their documents, maintain useful context and support more than text-only interaction.",
@@ -143,7 +143,7 @@ export const defaultContent: SiteContent = {
       metric: "2,000+",
       metricLabel: "planned student rollout",
       role: "Solo Developer · Gen AI Applications Intern",
-      timeline: "2025 — Present",
+      timeline: "2025 - Present",
       status: "Planned university rollout",
       problem:
         "A university-wide assistant must keep answers within the correct module material, personalize support without losing context and scale beyond a small pilot group.",
@@ -165,7 +165,7 @@ export const defaultContent: SiteContent = {
     {
       slug: "sinai",
       number: "03",
-      title: "SinAI — SinhalaJournalLLM",
+      title: "SinAI - SinhalaJournalLLM",
       summary: "Sinhala-focused AI writing research built from 700K+ news articles and a 36,000+ row grammar dataset.",
       description:
         "A research project developing a Sinhala-focused AI writing assistant for journalism using a fine-tuned language model, with my work centered on grammar correction, data engineering and research leadership.",
@@ -174,7 +174,7 @@ export const defaultContent: SiteContent = {
       metric: "36,000+",
       metricLabel: "grammar dataset rows",
       role: "Group Leader · Grammar Correction Researcher",
-      timeline: "2025 — 2026",
+      timeline: "2025 - 2026",
       status: "Language AI research",
       problem:
         "Sinhala journalism lacks mature language tools that can reliably correct spelling, grammar, punctuation and sentence structure while respecting real editorial language.",
@@ -234,7 +234,7 @@ export const defaultContent: SiteContent = {
       year: "Sep 2026",
       category: "Hackathon · University AI Innovation",
       description:
-        "Pitched a Sinhala journalism AI system to the judging panel at the National AI Expo during Sri Lanka AI Week 2026—one platform that takes a raw article through understanding, grammar and spelling correction, summarisation, headline generation and style rewriting to publish-ready content.",
+        "Pitched a Sinhala journalism AI system to the judging panel at the National AI Expo during Sri Lanka AI Week 2026: one platform that takes a raw article through understanding, grammar and spelling correction, summarisation, headline generation and style rewriting to publish-ready content.",
       image: "/images/achievements/ai-expo-2026/pitch-stage.jpg",
       imageAlt: "Nisal Fonseka's team presenting their Sinhala journalism AI system on stage at the AI Hackathon, Sri Lanka AI Week 2026",
       location: "SLT Auditorium, Colombo",
@@ -251,7 +251,7 @@ export const defaultContent: SiteContent = {
     {
       id: "coeai-student-adoption",
       title: "300+ active student users",
-      year: "2025 — Present",
+      year: "2025 - Present",
       category: "Product adoption",
       description:
         "The SLIIT COEAI Chatbot is actively used by students across Psychology, Computing and Business.",
@@ -261,7 +261,7 @@ export const defaultContent: SiteContent = {
     {
       id: "academic-platform-scale",
       title: "Designed for 2,000+ students",
-      year: "2025 — Present",
+      year: "2025 - Present",
       category: "Academic AI architecture",
       description:
         "The Academic Chatbot Platform was architected for a planned university-wide rollout to first- and second-year students.",
@@ -271,7 +271,7 @@ export const defaultContent: SiteContent = {
     {
       id: "sinai-language-corpus",
       title: "700K+ Sinhala news articles",
-      year: "2025 — 2026",
+      year: "2025 - 2026",
       category: "Research data milestone",
       description:
         "Built a large-scale Sinhala language corpus by scraping and processing newspaper content from Sinhala news sources.",
@@ -281,7 +281,7 @@ export const defaultContent: SiteContent = {
     {
       id: "sinai-grammar-dataset",
       title: "36,000+ grammar correction rows",
-      year: "2025 — 2026",
+      year: "2025 - 2026",
       category: "Dataset development",
       description:
         "Created a Sinhala grammar correction dataset spanning 18 categories through cleaning, annotation and error-pattern analysis.",
@@ -723,7 +723,7 @@ export const notes = [
     title: "Designing multi-LLM products without vendor lock-in",
     date: "06 Oct 2026",
     readTime: "6 min",
-    intro: "The model should be a replaceable capability inside the product—not the architecture of the entire product.",
+    intro: "The model should be a replaceable capability inside the product, not the architecture of the entire product.",
     sections: [
       ["Start with a stable contract", "A provider adapter should translate product-level requests into each vendor's format. The rest of the system should deal in capabilities, context and responses rather than provider-specific SDK objects."],
       ["Route for a reason", "Model routing is useful when it follows an explicit requirement: capability, latency, cost, context size or availability. Routing without evaluation only makes behavior harder to understand."],
@@ -747,7 +747,7 @@ export const notes = [
     title: "Evaluating Sinhala grammar correction beyond one score",
     date: "11 Aug 2026",
     readTime: "5 min",
-    intro: "A sentence benchmark and a real newspaper paragraph test reveal different failure modes—and both matter.",
+    intro: "A sentence benchmark and a real newspaper paragraph test reveal different failure modes, and both matter.",
     sections: [
       ["Separate controlled and natural text", "Sentence-level examples isolate correction behavior. Real-news paragraphs introduce style, context and error combinations that make the task closer to editorial use."],
       ["Explain what accuracy means", "A metric needs its unit, dataset and matching rule. Without those, a percentage is impressive-looking but difficult to trust or reproduce."],
@@ -758,16 +758,16 @@ export const notes = [
 
 export const experience = [
   {
-    role: "Software Engineer Intern — Gen AI Applications",
+    role: "Software Engineer Intern - Gen AI Applications",
     company: "SLIIT",
-    period: "Oct 2025 — Present",
+    period: "Oct 2025 - Present",
     description: "Designing and independently developing enterprise AI platforms across multi-model orchestration, retrieval, memory, voice and full-stack product engineering.",
     contributions: ["SLIIT COEAI Chatbot", "Academic Chatbot Platform", "RAG and AI memory", "Realtime voice systems"],
   },
   {
     role: "Software Development Intern",
     company: "Sri Lanka Telecom",
-    period: "Jan 2025 — Jul 2025",
+    period: "Jan 2025 - Jul 2025",
     description: "Contributed to software work in an enterprise telecommunications environment and gained experience with operational systems.",
     contributions: ["Enterprise software exposure", "Team delivery", "Operational systems"],
   },

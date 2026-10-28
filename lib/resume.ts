@@ -13,8 +13,8 @@ export const resume = {
   summary:
     "Generative AI Engineer and final-year BSc (Hons) Information Technology undergraduate specialising in Software Engineering, with hands-on experience designing and developing production-grade AI applications, LLM-powered platforms and full-stack systems. Experienced in generative AI, RAG, AI agents, NLP applications, chatbot development and scalable backend architectures. Currently contributing to enterprise AI platforms at SLIIT while developing research-driven Sinhala language AI solutions and customer-facing AI products.",
   experience: [
-    { role: "Software Engineer Intern — Gen AI Applications", company: "SLIIT", period: "Oct 2025 — Present" },
-    { role: "Software Development Intern", company: "Sri Lanka Telecom", period: "Jan 2025 — Jul 2025" },
+    { role: "Software Engineer Intern - Gen AI Applications", company: "SLIIT", period: "Oct 2025 - Present" },
+    { role: "Software Development Intern", company: "Sri Lanka Telecom", period: "Jan 2025 - Jul 2025" },
   ],
   projects: [
     {
@@ -45,7 +45,7 @@ export const resume = {
       technologies: "React, TypeScript, Node.js, Express.js, PostgreSQL, Drizzle ORM, pgvector, OpenAI API, RAG, Vector Search, JWT Authentication",
     },
     {
-      title: "SinAI — SinhalaJournalLLM",
+      title: "SinAI - SinhalaJournalLLM",
       context: "Final Year Research Project · Group Leader",
       href: "https://sinai.onrender.com/",
       summary: "Led a research team developing SinAI, a Sinhala-focused AI writing assistant for journalism using a fine-tuned Sinhala LLM.",
@@ -58,7 +58,7 @@ export const resume = {
       technologies: "Python, FastAPI, React, PostgreSQL, Llama-3-8B, SinLlama, LoRA fine-tuning, Unsloth, TRL, PEFT, NLP, Large Language Models",
     },
     {
-      title: "SamadhiRice.lk — AI-Powered E-commerce Platform",
+      title: "SamadhiRice.lk - AI-Powered E-commerce Platform",
       context: "Client project",
       href: "https://samadhirice.lk",
       summary:
@@ -71,9 +71,9 @@ export const resume = {
     },
   ],
   education: [
-    { institution: "Sri Lanka Institute of Information Technology (SLIIT)", qualification: "BSc (Hons) in Information Technology, specialising in Software Engineering", period: "Oct 2022 — Present" },
-    { institution: "ESOFT Metro Campus", qualification: "Diploma in Information Technology (DiTEC)", period: "Jan 2019 — Apr 2019" },
-    { institution: "Dharmaraja College, Kandy", qualification: "GCE Advanced Level", period: "May 2019 — Dec 2021" },
+    { institution: "Sri Lanka Institute of Information Technology (SLIIT)", qualification: "BSc (Hons) in Information Technology, specialising in Software Engineering", period: "Oct 2022 - Present" },
+    { institution: "ESOFT Metro Campus", qualification: "Diploma in Information Technology (DiTEC)", period: "Jan 2019 - Apr 2019" },
+    { institution: "Dharmaraja College, Kandy", qualification: "GCE Advanced Level", period: "May 2019 - Dec 2021" },
   ],
   skills: [
     ["Programming languages", "Java, JavaScript, TypeScript, Python, Kotlin, C#"],
@@ -89,7 +89,7 @@ export const resume = {
     ["Soft skills", "Problem-solving, team collaboration, effective communication"],
     ["Languages", "Sinhala, English"],
   ],
-  certifications: ["Foundational C# with Microsoft", "SLIIT AI/ML Engineer — Stage 1"],
+  certifications: ["Foundational C# with Microsoft", "SLIIT AI/ML Engineer - Stage 1"],
   references: [
     { name: "Prof. Nuwan Kodagoda", title: "Deputy Vice Chancellor", organisation: "SLIIT" },
     { name: "M. Giridaran", title: "Manager Software Development", organisation: "Sri Lanka Telecom" },

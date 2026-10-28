@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next"
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Nisal Fonseka — AI Application Engineer",
+    name: "Nisal Fonseka - Freelance AI Developer in Sri Lanka",
     short_name: "Nisal Fonseka",
     description: "AI application engineering, research and full-stack product work by Nisal Fonseka.",
     start_url: "/",
