@@ -13,13 +13,6 @@ import { whatsappUrl } from "@/lib/contact"
 
 export const revalidate = 300
 
-const proof = [
-  ["300+", "active users across three SLIIT departments"],
-  ["2,000+", "students in the planned academic rollout"],
-  ["87.7%", "sentence-level grammar correction accuracy"],
-  ["36,000+", "rows across 18 Sinhala grammar categories"],
-]
-
 export default async function HomePage() {
   const content = await getPublicSiteContent()
   const homeProjects = content.projects.filter((project) => project.showOnHome !== false)
@@ -37,17 +30,6 @@ export default async function HomePage() {
               {item}<span className="size-1 rounded-full bg-orange-500" />
             </span>
           )))}
-        </div>
-      </section>
-
-      <section className="border-b border-black/15 bg-paper px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
-        <div className="mx-auto grid max-w-[1440px] gap-px overflow-hidden border border-black/15 bg-black/15 sm:grid-cols-2 lg:grid-cols-4">
-          {proof.map(([value, label], index) => (
-            <Reveal key={value} delay={index * 0.06} className="bg-paper p-6 lg:p-8">
-              <strong className="block text-3xl font-semibold tracking-[-.05em]">{value}</strong>
-              <span className="mt-3 block text-xs leading-5 text-black/50">{label}</span>
-            </Reveal>
-          ))}
         </div>
       </section>
 
