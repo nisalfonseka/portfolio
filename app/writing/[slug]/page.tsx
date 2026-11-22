@@ -14,7 +14,7 @@ export function generateStaticParams() { return notes.map((note) => ({ slug: not
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const note = notes.find((item) => item.slug === slug)
-  return note ? createPageMetadata({ title: note.title, description: note.intro, path: `/writing/${slug}` }) : { title: "Writing" }
+  return note ? createPageMetadata({ title: note.title, description: note.intro, path: `/writing/${slug}`, type: "article" }) : { title: "Writing" }
 }
 
 export default async function NotePage({ params }: Props) {
@@ -28,6 +28,8 @@ export default async function NotePage({ params }: Props) {
     "evaluating-sinhala-grammar-correction": { href: "/work/sinai", label: "SinAI research case study" },
   }
   const relatedProject = relatedProjects[note.slug]
+  // Note dates are stored as display text ("06 Oct 2026"); expose a machine-readable ISO date too.
+  const isoDate = new Date(`${note.date} UTC`).toISOString().slice(0, 10)
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -38,7 +40,12 @@ export default async function NotePage({ params }: Props) {
         description: note.intro,
         url: canonicalUrl,
         mainEntityOfPage: canonicalUrl,
+        datePublished: isoDate,
+        dateModified: isoDate,
+        image: absoluteUrl("/opengraph-image"),
+        inLanguage: "en",
         author: { "@id": personSchemaId },
+        publisher: { "@id": personSchemaId },
         isPartOf: { "@id": websiteSchemaId },
       },
       {
@@ -57,7 +64,7 @@ export default async function NotePage({ params }: Props) {
       <article>
         <StructuredData id="article-schema" data={structuredData} />
         <header className="border-b border-black/15 px-5 pb-20 pt-20 sm:px-8 lg:px-12 lg:pb-28 lg:pt-28">
-          <div className="mx-auto max-w-5xl"><Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Writing", href: "/writing" }, { label: note.title }]} /><h1 className="display text-[clamp(4rem,9vw,8.5rem)] font-semibold">{note.title}</h1><p className="mt-10 max-w-3xl text-xl leading-8 text-black/58">{note.intro}</p><p className="mt-8 text-[11px] font-semibold uppercase tracking-[.15em] text-black/40">{note.date} · {note.readTime}</p></div>
+          <div className="mx-auto max-w-5xl"><Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Writing", href: "/writing" }, { label: note.title }]} /><h1 className="display text-[clamp(4rem,9vw,8.5rem)] font-semibold">{note.title}</h1><p className="mt-10 max-w-3xl text-xl leading-8 text-black/58">{note.intro}</p><p className="mt-8 text-[11px] font-semibold uppercase tracking-[.15em] text-black/40"><time dateTime={isoDate}>{note.date}</time> · {note.readTime}</p></div>
         </header>
         <div className="mx-auto max-w-3xl px-5 py-16 sm:px-8 lg:py-24">
           {note.sections.map(([heading, body]) => <section key={heading} className="mb-16"><h2 className="text-3xl font-semibold tracking-[-.045em]">{heading}</h2><p className="mt-6 text-lg leading-9 text-black/62">{body}</p></section>)}

@@ -3,7 +3,7 @@
 export const resume = {
   name: "Nisal Fonseka",
   title: "AI Application Engineer",
-  location: "Malabe, Sri Lanka",
+  location: "Colombo, Sri Lanka",
   email: "hello@nisalfonseka.com",
   phone: "+94 71 076 7697",
   links: [

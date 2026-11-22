@@ -23,9 +23,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = projects.find((item) => item.slug === slug)
   if (!project) return { title: "Work" }
   return createPageMetadata({
-    title: project.title,
+    title: `${project.title}: ${project.category} Case Study`,
     description: project.summary,
     path: `/work/${project.slug}`,
+    image: project.image,
   })
 }
 
@@ -40,17 +41,21 @@ export default async function ProjectPage({ params }: Props) {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "SoftwareApplication",
-        "@id": `${canonicalUrl}#software`,
-        name: project.title,
+        // A case study describes the work; SoftwareApplication would need price and rating data to be valid.
+        "@type": "CreativeWork",
+        "@id": `${canonicalUrl}#case-study`,
+        name: `${project.title} case study`,
+        headline: `${project.title}: ${project.category} Case Study`,
         url: canonicalUrl,
+        abstract: project.summary,
         description: project.description,
-        applicationCategory: project.category,
-        operatingSystem: "Web",
+        genre: project.category,
         image: projectImage,
         keywords: project.tags.join(", "),
         author: { "@id": personSchemaId },
+        creator: { "@id": personSchemaId },
         isPartOf: { "@id": websiteSchemaId },
+        about: { "@type": "Thing", name: project.title, ...(project.externalUrl && { url: project.externalUrl }) },
       },
       {
         "@type": "BreadcrumbList",
@@ -84,7 +89,7 @@ export default async function ProjectPage({ params }: Props) {
           <div className="mx-auto max-w-[1440px] overflow-hidden border border-black/15 bg-ink">
             {/* Admin-managed images may use local or remote URLs. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={project.image} alt={`System overview for ${project.title}`} width={1600} height={800} className="aspect-[16/8] w-full object-cover" loading="lazy" decoding="async" />
+            <img src={project.image} alt={`System overview for ${project.title}`} width={1600} height={800} className="aspect-[16/8] w-full object-cover" fetchPriority="high" decoding="async" />
           </div>
         </section>
 

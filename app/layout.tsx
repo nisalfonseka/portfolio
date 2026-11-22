@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import { StructuredData } from "@/components/structured-data"
-import { personSchemaId, siteUrl, websiteSchemaId } from "@/lib/seo"
+import { businessSchemaId, entitySummary, personSchemaId, sameAsProfiles, siteUrl, websiteSchemaId } from "@/lib/seo"
 import "./globals.css"
 
 const montserrat = Montserrat({
@@ -17,12 +17,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: "Nisal Fonseka Portfolio",
   title: {
-    default: "Nisal Fonseka - Freelance AI Developer in Sri Lanka",
+    default: "Nisal Fonseka - Freelance AI Developer in Colombo, Sri Lanka",
     template: "%s - Nisal Fonseka",
   },
   description:
-    "AI application engineer building production-grade LLM applications, RAG systems and full-stack software products.",
-  keywords: ["Nisal Fonseka", "AI Application Engineer Sri Lanka", "RAG development", "LLM application development", "full-stack developer"],
+    "Freelance AI engineer in Colombo, Sri Lanka building custom AI chatbots, RAG knowledge assistants, AI agents and full-stack products for businesses.",
+  keywords: ["Nisal Fonseka", "freelance AI developer Colombo", "AI engineer Sri Lanka", "AI chatbot developer Sri Lanka", "RAG development", "LLM application development", "full-stack developer"],
   authors: [{ name: "Nisal Fonseka" }],
   creator: "Nisal Fonseka",
   alternates: { canonical: "/" },
@@ -31,13 +31,13 @@ export const metadata: Metadata = {
     locale: "en_LK",
     url: siteUrl,
     siteName: "Nisal Fonseka",
-    title: "Nisal Fonseka - Freelance AI Developer in Sri Lanka",
-    description: "I build AI-powered products end-to-end, from retrieval and model orchestration to polished web applications.",
+    title: "Nisal Fonseka - Freelance AI Developer in Colombo, Sri Lanka",
+    description: "Custom AI chatbots, RAG assistants, AI agents and full-stack products, built end-to-end from Colombo, Sri Lanka.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nisal Fonseka - Freelance AI Developer in Sri Lanka",
-    description: "AI application engineer building production-grade LLM applications, RAG systems and full-stack software products.",
+    title: "Nisal Fonseka - Freelance AI Developer in Colombo, Sri Lanka",
+    description: "Freelance AI engineer in Colombo, Sri Lanka building custom AI chatbots, RAG knowledge assistants, AI agents and full-stack products.",
   },
   icons: {
     icon: [
@@ -82,22 +82,40 @@ const structuredData = {
       "@type": "Person",
       "@id": personSchemaId,
       name: "Nisal Fonseka",
-      jobTitle: "AI Application Engineer",
+      jobTitle: "Freelance AI Engineer",
+      description: entitySummary,
       url: siteUrl,
       image: `${siteUrl}/images/siteicon.png`,
       email: "mailto:hello@nisalfonseka.com",
       telephone: "+94710767697",
-      address: { "@type": "PostalAddress", addressLocality: "Malabe", addressCountry: "LK" },
+      address: { "@type": "PostalAddress", addressLocality: "Colombo", addressRegion: "Western Province", addressCountry: "LK" },
+      homeLocation: { "@type": "City", name: "Colombo", containedInPlace: { "@type": "Country", name: "Sri Lanka" } },
       alumniOf: { "@type": "CollegeOrUniversity", name: "Sri Lanka Institute of Information Technology" },
-      sameAs: ["https://github.com/nisalfonseka", "https://www.linkedin.com/in/nisalfonseka/"],
+      sameAs: sameAsProfiles,
       knowsLanguage: ["English", "Sinhala"],
-      knowsAbout: ["AI engineering", "retrieval-augmented generation", "large language models", "full-stack development", "Sinhala NLP"],
+      knowsAbout: ["AI engineering", "AI chatbot development", "retrieval-augmented generation", "AI agents", "large language models", "voice AI", "full-stack development", "Sinhala NLP"],
+      hasOccupation: { "@type": "Occupation", name: "AI Engineer", occupationLocation: { "@type": "City", name: "Colombo" } },
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": businessSchemaId,
+      name: "Nisal Fonseka - Freelance AI Engineering",
+      description: "Freelance AI chatbot, RAG assistant, AI agent, AI automation and full-stack development services in Colombo, Sri Lanka and worldwide.",
+      url: siteUrl,
+      image: `${siteUrl}/images/siteicon.png`,
+      email: "hello@nisalfonseka.com",
+      telephone: "+94710767697",
+      address: { "@type": "PostalAddress", addressLocality: "Colombo", addressRegion: "Western Province", addressCountry: "LK" },
+      areaServed: [{ "@type": "City", name: "Colombo" }, { "@type": "Country", name: "Sri Lanka" }, "Worldwide"],
+      founder: { "@id": personSchemaId },
+      sameAs: sameAsProfiles,
+      knowsLanguage: ["English", "Sinhala"],
     },
     {
       "@type": "ProfilePage",
       "@id": `${siteUrl}/#profile-page`,
       url: siteUrl,
-      name: "Nisal Fonseka - Freelance AI Developer in Sri Lanka",
+      name: "Nisal Fonseka - Freelance AI Developer in Colombo, Sri Lanka",
       isPartOf: { "@id": websiteSchemaId },
       mainEntity: { "@id": personSchemaId },
     },

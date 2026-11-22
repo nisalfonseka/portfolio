@@ -6,7 +6,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs"
 import { StructuredData } from "@/components/structured-data"
 import { servicePages } from "@/lib/content"
 import { whatsappUrl } from "@/lib/contact"
-import { absoluteUrl, createPageMetadata, personSchemaId } from "@/lib/seo"
+import { absoluteUrl, businessSchemaId, createPageMetadata, personSchemaId } from "@/lib/seo"
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -38,7 +38,7 @@ export default async function ServicePage({ params }: Props) {
         name: service.title,
         url: canonicalUrl,
         description: service.description,
-        provider: { "@id": personSchemaId },
+        provider: [{ "@id": businessSchemaId }, { "@id": personSchemaId }],
         areaServed: [{ "@type": "City", name: "Colombo" }, { "@type": "Country", name: "Sri Lanka" }, "Worldwide"],
         serviceType: service.title,
         audience: { "@type": "BusinessAudience", audienceType: "Small and medium-sized businesses, product teams and organizations adopting AI" },
@@ -131,7 +131,7 @@ export default async function ServicePage({ params }: Props) {
         <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[.65fr_1.35fr]">
           <div><p className="text-xs font-semibold uppercase tracking-[.16em] text-orange-700">Experience you can verify</p><h2 className="mt-5 text-3xl font-semibold tracking-[-.05em] sm:text-5xl lg:text-6xl">Why work with me</h2></div>
           <div className="grid gap-px border border-black/15 bg-black/15 sm:grid-cols-2">
-            {[["300+", "active users of an AI chat platform across three SLIIT departments"], ["2,000+", "students in the planned rollout for a module-specific academic AI platform"], ["End-to-end", "AI, backend, database and frontend engineering in one delivery path"], ["Sri Lanka", "based in Malabe and available to work remotely with international teams"]].map(([value, copy]) => (
+            {[["300+", "active users of an AI chat platform across three SLIIT departments"], ["2,000+", "students in the planned rollout for a module-specific academic AI platform"], ["End-to-end", "AI, backend, database and frontend engineering in one delivery path"], ["Sri Lanka", "based in Colombo and available to work remotely with international teams"]].map(([value, copy]) => (
               <div key={value} className="bg-paper p-6 sm:p-8"><strong className="block text-3xl font-semibold tracking-[-.05em]">{value}</strong><p className="mt-4 text-sm leading-6 text-black/55">{copy}</p></div>
             ))}
           </div>

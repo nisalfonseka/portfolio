@@ -14,7 +14,7 @@ export function SiteFooter() {
             </Link>
           </div>
           <div className="space-y-3 text-sm">
-            <p className="font-semibold">Malabe, Sri Lanka</p>
+            <p className="font-semibold">Colombo, Sri Lanka</p>
             <p className="text-white/55">Working remotely worldwide</p>
             <a className="text-link inline-block text-white/75" href="mailto:hello@nisalfonseka.com">hello@nisalfonseka.com</a>
             <a className="inline-flex items-center gap-2 text-[#61e990]" href={whatsappUrl} target="_blank" rel="noreferrer"><MessageCircle size={16} /> WhatsApp {whatsappDisplayNumber}</a>
@@ -31,6 +31,9 @@ export function SiteFooter() {
             <div className="flex flex-col items-start gap-2.5 text-sm text-white/75 sm:gap-3">
               <a className="text-link" href="https://www.linkedin.com/in/nisalfonseka/" target="_blank" rel="noreferrer">LinkedIn</a>
               <a className="text-link" href="https://github.com/nisalfonseka" target="_blank" rel="noreferrer">GitHub</a>
+              <a className="text-link" href="https://huggingface.co/nisalfonseka" target="_blank" rel="noreferrer">Hugging Face</a>
+              <a className="text-link" href="https://medium.com/@nisalfonseka" target="_blank" rel="noreferrer">Medium</a>
+              <a className="text-link" href="https://www.upwork.com/freelancers/~0147a2658b112b1402" target="_blank" rel="noreferrer">Upwork</a>
               <Link className="text-link" href="/about">About</Link>
               <Link className="text-link" href="/achievements">Recognition</Link>
               <Link className="text-link" href="/resume">Résumé</Link>

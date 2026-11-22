@@ -34,18 +34,22 @@ export default function Hero() {
       <div className="hero-vignette absolute inset-0" />
 
       <div className="relative z-10 mx-auto flex min-h-[760px] max-w-[1440px] -translate-y-[4vh] flex-col justify-center px-5 pb-8 pt-28 sm:px-8 md:min-h-screen lg:px-12 lg:pb-10">
-        <motion.h1
+        <h1 className="mb-6 text-[11px] font-semibold uppercase tracking-[.16em] text-orange-400 sm:mb-8 sm:text-xs sm:tracking-[.18em]">
+          Nisal Fonseka · Freelance AI Engineer in Colombo, Sri Lanka
+        </h1>
+        {/* Rendered visible on the server (no opacity:0) so the largest text paints immediately. */}
+        <motion.p
           aria-label="I build intelligent software products."
           className="display max-w-[1080px] text-[clamp(3.75rem,9.3vw,9.25rem)] font-semibold"
-          initial={reducedMotion ? false : { opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={reducedMotion ? false : { y: 24 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.85, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         >
           <span aria-hidden="true" className="block">I build</span>
           <span aria-hidden="true" className="block">intelligent</span>
           <span aria-hidden="true" className="block">software</span>
           <span aria-hidden="true" className="block">products.</span>
-        </motion.h1>
+        </motion.p>
 
         <motion.div
           className="mt-9 grid gap-8 md:grid-cols-[1fr_auto] md:items-end"
@@ -54,7 +58,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.45 }}
         >
           <p className="max-w-xl text-sm leading-6 text-white/68 sm:text-base sm:leading-7">
-            From LLM and RAG systems to complete full-stack products, I engineer the path from an ambitious idea to reliable software.
+            I design and build custom AI chatbots, RAG knowledge assistants, AI agents and full-stack products for businesses in Colombo, across Sri Lanka and worldwide.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link href="/work" className="inline-flex items-center justify-center gap-2 border border-white/35 px-5 py-3 text-[11px] font-semibold uppercase tracking-[.15em] transition-colors hover:bg-white hover:text-black">

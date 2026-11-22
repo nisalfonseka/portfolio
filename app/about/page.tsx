@@ -2,25 +2,38 @@ import Link from "next/link"
 import { ArrowRight, MessageCircle } from "lucide-react"
 import { PageHeading } from "@/components/page-heading"
 import { whatsappUrl } from "@/lib/contact"
-import { createPageMetadata } from "@/lib/seo"
+import { StructuredData } from "@/components/structured-data"
+import { absoluteUrl, createPageMetadata, entitySummary, personSchemaId, websiteSchemaId } from "@/lib/seo"
 
 export const metadata = createPageMetadata({
-  title: "About Nisal Fonseka",
-  description: "Learn about Nisal Fonseka, an AI application engineer in Sri Lanka working across enterprise RAG systems, full-stack products and Sinhala NLP research.",
+  title: "About: Freelance AI Engineer in Colombo, Sri Lanka",
+  description: "Nisal Fonseka is a freelance AI engineer and full-stack developer in Colombo, Sri Lanka, building AI chatbots, RAG assistants, AI agents and Sinhala NLP solutions.",
   path: "/about",
 })
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": `${absoluteUrl("/about")}#about-page`,
+  url: absoluteUrl("/about"),
+  name: "About Nisal Fonseka",
+  description: entitySummary,
+  isPartOf: { "@id": websiteSchemaId },
+  mainEntity: { "@id": personSchemaId },
+}
 
 export default function AboutPage() {
   return (
     <main className="page-shell">
-      <PageHeading title="About Nisal" intro="I’m a software engineer focused on useful products at the intersection of AI, full-stack development and language research." />
+      <StructuredData id="about-schema" data={aboutSchema} />
+      <PageHeading title="About Nisal" intro="I’m Nisal Fonseka, a freelance AI engineer and full-stack developer based in Colombo, Sri Lanka, focused on useful products at the intersection of AI, full-stack development and language research." />
       <section className="px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="mx-auto grid max-w-[1440px] gap-14 lg:grid-cols-[.8fr_1.2fr]">
           <h2 className="display text-[clamp(3.5rem,7vw,7rem)] font-semibold">How I got here</h2>
           <div className="space-y-7 text-lg leading-8 text-black/62">
             <p>I started with software development, moved through full-stack product work, and gradually focused on the engineering challenges that appear when language models meet real users and real data.</p>
             <p>That path now spans AI assistants, retrieval systems, product interfaces, backend architecture, deployment and Sinhala NLP research. The common thread is not a specific framework. It is building the complete system required to make an idea useful.</p>
-            <p>I work from Sri Lanka with local and international teams, turning focused AI ideas into production-oriented software that is clear, useful and maintainable.</p>
+            <p>I work from Colombo, Sri Lanka with local and international teams, turning focused AI ideas into production-oriented software that is clear, useful and maintainable.</p>
           </div>
         </div>
       </section>

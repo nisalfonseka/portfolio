@@ -10,6 +10,7 @@ import { Reveal } from "@/components/reveal"
 import { getPublicSiteContent } from "@/lib/content-store"
 import { experience, notes, services } from "@/lib/content"
 import { whatsappUrl } from "@/lib/contact"
+import { entitySummary } from "@/lib/seo"
 
 export const revalidate = 300
 
@@ -30,6 +31,23 @@ export default async function HomePage() {
               {item}<span className="size-1 rounded-full bg-orange-500" />
             </span>
           )))}
+        </div>
+      </section>
+
+      <section className="border-b border-black/15 px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
+        <div className="mx-auto grid max-w-[1440px] gap-8 lg:grid-cols-[.8fr_1.2fr] lg:gap-16">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[.16em] text-orange-700">About Nisal</p>
+            <h2 className="mt-5 text-3xl font-semibold tracking-[-.05em] sm:text-5xl">Freelance AI engineer in Colombo, Sri Lanka</h2>
+          </div>
+          <div>
+            <p className="text-lg leading-8 text-black/70 sm:text-xl sm:leading-9">{entitySummary}</p>
+            <p className="mt-6 text-base leading-7 text-black/55">Recent work includes AI-powered product discovery for SamadhiRice.lk and Sinhala NLP research built on a 700K+ article Sinhala news corpus, reaching 87.7% sentence-level grammar-correction accuracy.</p>
+            <div className="mt-8 flex flex-wrap gap-6">
+              <Link href="/services" className="inline-flex items-center gap-2 border-b border-black pb-2 text-xs font-semibold uppercase tracking-[.15em]">AI services <ArrowRight size={15} /></Link>
+              <Link href="/about" className="inline-flex items-center gap-2 border-b border-black pb-2 text-xs font-semibold uppercase tracking-[.15em]">About me <ArrowRight size={15} /></Link>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -151,7 +169,7 @@ export default async function HomePage() {
           <div>
             <h2 className="display text-[clamp(3.5rem,6vw,6rem)] font-semibold">Have a project in mind?</h2>
             <p className="mt-8 max-w-md text-base leading-7 text-black/58">Tell me what you’re building, the problem you’re solving and where you are in the process. A clear description of the users and constraints is enough to begin.</p>
-            <div className="mt-10 border-t border-black/20 pt-5 text-sm"><a className="font-semibold" href="mailto:hello@nisalfonseka.com">hello@nisalfonseka.com</a><p className="mt-2 text-black/45">Malabe, Sri Lanka · Available remotely worldwide</p><a href={whatsappUrl} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 bg-[#25D366] px-5 py-3 text-xs font-semibold uppercase tracking-[.14em] text-[#092b16] transition-colors hover:bg-[#31e572]"><MessageCircle size={16} /> Chat on WhatsApp</a></div>
+            <div className="mt-10 border-t border-black/20 pt-5 text-sm"><a className="font-semibold" href="mailto:hello@nisalfonseka.com">hello@nisalfonseka.com</a><p className="mt-2 text-black/45">Colombo, Sri Lanka · Available remotely worldwide</p><a href={whatsappUrl} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 bg-[#25D366] px-5 py-3 text-xs font-semibold uppercase tracking-[.14em] text-[#092b16] transition-colors hover:bg-[#31e572]"><MessageCircle size={16} /> Chat on WhatsApp</a></div>
           </div>
           <Reveal><ContactForm /></Reveal>
         </div>

@@ -2,7 +2,7 @@
 
 > A detailed, LLM-readable summary of the public information on nisalfonseka.com. Use the linked canonical pages when citing or verifying individual claims.
 
-Nisal Fonseka is an AI Application Engineer based in Malabe, Sri Lanka. His work combines generative AI, retrieval-augmented generation, AI memory, realtime voice interaction, backend architecture, full-stack product development and Sinhala natural-language processing.
+Nisal Fonseka is an AI Application Engineer based in Colombo, Sri Lanka. His work combines generative AI, retrieval-augmented generation, AI memory, realtime voice interaction, backend architecture, full-stack product development and Sinhala natural-language processing.
 
 ## Professional experience
 

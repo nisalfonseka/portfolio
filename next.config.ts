@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   async redirects() {
     return [
+      // Consolidate www onto the canonical apex domain so search engines see one site.
+      { source: "/:path*", has: [{ type: "host", value: "www.nisalfonseka.com" }], destination: "https://nisalfonseka.com/:path*", permanent: true },
       { source: "/work/sliit-ai-assistant", destination: "/work/sliit-coeai-chatbot", permanent: true },
       { source: "/work/sliit-academic-ai", destination: "/work/sliit-academic-chatbot-platform", permanent: true },
       { source: "/services/ai-engineering", destination: "/services/ai-development-sri-lanka", permanent: true },
