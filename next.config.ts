@@ -7,8 +7,6 @@ const nextConfig: NextConfig = {
     return [
       // Consolidate www onto the canonical apex domain so search engines see one site.
       { source: "/:path*", has: [{ type: "host", value: "www.nisalfonseka.com" }], destination: "https://nisalfonseka.com/:path*", permanent: true },
-      { source: "/work/sliit-ai-assistant", destination: "/work/sliit-coeai-chatbot", permanent: true },
-      { source: "/work/sliit-academic-ai", destination: "/work/sliit-academic-chatbot-platform", permanent: true },
       { source: "/services/ai-engineering", destination: "/services/ai-development-sri-lanka", permanent: true },
       { source: "/services/rag-ai-chatbot-development", destination: "/services/rag-ai-assistant-development-sri-lanka", permanent: true },
       { source: "/services/ai-product-development", destination: "/services/ai-product-development-sri-lanka", permanent: true },

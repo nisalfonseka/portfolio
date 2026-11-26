@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next"
 import { getSiteContent } from "@/lib/content-store"
-import { notes, servicePages } from "@/lib/content"
+import { hasProjectPage, notes, servicePages } from "@/lib/content"
 import { absoluteUrl } from "@/lib/seo"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -23,7 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...staticPages.map((page) => ({ url: absoluteUrl(page.path), lastModified: page.path === "/services" ? servicesUpdated : contentUpdated, changeFrequency: page.changeFrequency, priority: page.priority })),
-    ...projects.map((project) => ({ url: absoluteUrl(`/work/${project.slug}`), lastModified: contentUpdated, changeFrequency: "monthly" as const, priority: 0.8 })),
+    ...projects.filter((project) => hasProjectPage(project.slug)).map((project) => ({ url: absoluteUrl(`/work/${project.slug}`), lastModified: contentUpdated, changeFrequency: "monthly" as const, priority: 0.8 })),
     ...servicePages.map((service) => ({ url: absoluteUrl(`/services/${service.slug}`), lastModified: servicesUpdated, changeFrequency: "monthly" as const, priority: 0.8 })),
     ...notes.map((note) => ({ url: absoluteUrl(`/writing/${note.slug}`), lastModified: new Date(note.date), changeFrequency: "yearly" as const, priority: 0.65 })),
   ]

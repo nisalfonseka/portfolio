@@ -23,8 +23,6 @@ export default async function NotePage({ params }: Props) {
   if (!note) notFound()
   const canonicalUrl = absoluteUrl(`/writing/${note.slug}`)
   const relatedProjects: Record<string, { href: string; label: string }> = {
-    "multi-llm-without-lock-in": { href: "/work/sliit-coeai-chatbot", label: "SLIIT COEAI Chatbot case study" },
-    "rag-with-postgres-pgvector": { href: "/work/sliit-academic-chatbot-platform", label: "Academic Chatbot Platform case study" },
     "evaluating-sinhala-grammar-correction": { href: "/work/sinai", label: "SinAI research case study" },
   }
   const relatedProject = relatedProjects[note.slug]

@@ -22,6 +22,16 @@ export type Project = {
   showOnHome?: boolean
 }
 
+/**
+ * Projects that are listed on the site but have no public case-study page.
+ * Their /work/<slug> URLs return 404 and are left out of the sitemap, so search engines drop them.
+ */
+const projectsWithoutPage = new Set(["sliit-coeai-chatbot", "sliit-academic-chatbot-platform"])
+
+export function hasProjectPage(slug: string) {
+  return !projectsWithoutPage.has(slug)
+}
+
 export type GalleryImage = {
   image: string
   alt: string

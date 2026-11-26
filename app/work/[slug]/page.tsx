@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import { ArrowRight, ArrowUpRight, MessageCircle } from "lucide-react"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import { StructuredData } from "@/components/structured-data"
+import { hasProjectPage } from "@/lib/content"
 import { getPublicSiteContent } from "@/lib/content-store"
 import { whatsappUrl } from "@/lib/contact"
 import { absoluteUrl, createPageMetadata, personSchemaId, websiteSchemaId } from "@/lib/seo"
@@ -14,14 +15,14 @@ export const revalidate = 300
 
 export async function generateStaticParams() {
   const { projects } = await getPublicSiteContent()
-  return projects.map((project) => ({ slug: project.slug }))
+  return projects.filter((project) => hasProjectPage(project.slug)).map((project) => ({ slug: project.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const { projects } = await getPublicSiteContent()
   const project = projects.find((item) => item.slug === slug)
-  if (!project) return { title: "Work" }
+  if (!project || !hasProjectPage(project.slug)) return { title: "Work" }
   return createPageMetadata({
     title: `${project.title}: ${project.category} Case Study`,
     description: project.summary,
@@ -34,7 +35,7 @@ export default async function ProjectPage({ params }: Props) {
   const { slug } = await params
   const { projects } = await getPublicSiteContent()
   const project = projects.find((item) => item.slug === slug)
-  if (!project) notFound()
+  if (!project || !hasProjectPage(project.slug)) notFound()
   const canonicalUrl = absoluteUrl(`/work/${project.slug}`)
   const projectImage = project.image.startsWith("/") ? absoluteUrl(project.image) : project.image
   const structuredData = {
